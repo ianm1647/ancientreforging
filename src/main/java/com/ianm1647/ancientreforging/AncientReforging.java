@@ -1,6 +1,11 @@
-package com.ianm1647.wundermeka;
+package com.ianm1647.ancientreforging;
 
+import com.ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
+import com.ianm1647.ancientreforging.screen.AncientReforgingScreen;
 import com.mojang.logging.LogUtils;
+import dev.shadowsoffire.apotheosis.adventure.Adventure;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -13,15 +18,17 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(WundermekaMain.MODID)
-public class WundermekaMain
+@Mod(AncientReforging.MODID)
+public class AncientReforging
 {
-    public static final String MODID = "wundermeka";
+    public static final String MODID = "ancientreforging";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public WundermekaMain()
+    public AncientReforging()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        AncientReforgingRegistry.bootstrap();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -36,7 +43,9 @@ public class WundermekaMain
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTabKey() == Adventure.Tabs.ADVENTURE.getKey()) {
+            event.accept(AncientReforgingRegistry.Blocks.ANCIENT_REFORGING_TABLE);
+        }
     }
 
     @SubscribeEvent
@@ -51,7 +60,8 @@ public class WundermekaMain
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            MenuScreens.register(AncientReforgingRegistry.Menus.ANCIENT_REFORGING.get(), AncientReforgingScreen::new);
+            BlockEntityRenderers.register(AncientReforgingRegistry.BlockEntities.ANCIENT_REFORGING_TABLE.get(), k -> new AncientReforgingTableTileRenderer());
         }
     }
 }

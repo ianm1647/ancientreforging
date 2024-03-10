@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "conditions": [{
+	"type": "apotheosis:module",
+    "module": "adventure"
+  }],
+  "group": "something",
+  "pattern": [
+    " N ",
+    "GEG",
+    "BBB"
+  ],
+  "key": {
+    "N": {
+      "item": "apotheosis:ancient_material"
+    },
+	"G": {
+      "item": "apotheosis:mythic_material"
+    },
+	"E": {
+      "item": "apotheosis:reforging_table"
+    },
+	"B": {
+      "item": "minecraft:end_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "ancientreforging:ancient_reforging_table",
+    "count": 1
+  }
+}

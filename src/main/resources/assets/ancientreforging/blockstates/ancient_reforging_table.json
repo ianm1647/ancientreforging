@@ -1,0 +1,5 @@
+{
+    "variants": {
+		"": { "model": "ancientreforging:block/ancient_reforging_table" }
+    }
+}
