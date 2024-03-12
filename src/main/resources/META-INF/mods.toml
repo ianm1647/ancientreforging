@@ -8,6 +8,7 @@ version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
+logoFile="logo.png"
 [[dependencies.${mod_id}]]
     modId="forge"
     mandatory=true
@@ -18,5 +19,17 @@ description='''${mod_description}'''
     modId="minecraft"
     mandatory=true
     versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="placebo"
+    mandatory=true
+    versionRange="[8.6.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="apotheosis"
+    mandatory=true
+    versionRange="[7.3.1,)"
     ordering="NONE"
     side="BOTH"

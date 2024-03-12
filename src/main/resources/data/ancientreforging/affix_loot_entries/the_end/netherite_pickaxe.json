@@ -1,0 +1,16 @@
+{
+    "dimensions": [
+        "minecraft:the_end"
+    ],
+    "min_rarity": "apotheosis:ancient",
+    "max_rarity": "apotheosis:ancient",
+    "weight": 5,
+    "quality": 20.0,
+    "stack": {
+        "item": "minecraft:netherite_pickaxe",
+        "count": 1,
+        "nbt": {
+            "Damage": 0
+        }
+    }
+}

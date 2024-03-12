@@ -1,0 +1,70 @@
+{
+	"entity": "minecraft:enderman",
+	"weight": 5,
+	"quality": 2
+	"size": {
+		"width": 0.6,
+		"height": 2.9
+	},
+	"valid_gear_sets": [
+		"#the_end"
+	],
+	"dimensions": [
+		"minecraft:the_end"
+	],
+	"min_rarity": "ancient",
+	"max_rarity": "ancient",
+	"stats": {
+		"ancient": {
+			"enchant_chance": 1.4,
+			"enchantment_levels": [45, 38, 93, 73],
+			"effects": [{
+				"effect": "minecraft:fire_resistance",
+				"chance": 1.0
+			}],
+			"attribute_modifiers": [{
+				"attribute": "minecraft:generic.max_health",
+				"operation": "ADDITION",
+				"value": {
+					"min": 280,
+					"steps": 52,
+					"step": 3
+				}
+			},
+				{
+					"attribute": "minecraft:generic.movement_speed",
+					"operation": "MULTIPLY_BASE",
+					"value": {
+						"min": 0.6,
+						"steps": 45,
+						"step": 0.03
+					}
+				},
+				{
+					"attribute": "minecraft:generic.attack_damage",
+					"operation": "MULTIPLY_BASE",
+					"value": {
+						"min": 0.9,
+						"steps": 42,
+						"step": 0.07
+					}
+				},
+				{
+					"attribute": "minecraft:generic.knockback_resistance",
+					"operation": "ADDITION",
+					"value": 1
+				},
+				{
+					"attribute": "minecraft:generic.armor",
+					"operation": "ADDITION",
+					"value": 10
+				},
+				{
+					"attribute": "minecraft:generic.armor_toughness",
+					"operation": "ADDITION",
+					"value": 5
+				}
+			]
+		}
+	}
+}

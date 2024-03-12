@@ -3,10 +3,13 @@ package com.ianm1647.ancientreforging;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
 import com.ianm1647.ancientreforging.screen.AncientReforgingScreen;
 import com.mojang.logging.LogUtils;
+import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.adventure.Adventure;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -43,8 +46,11 @@ public class AncientReforging
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == Adventure.Tabs.ADVENTURE.getKey()) {
-            event.accept(AncientReforgingRegistry.Blocks.ANCIENT_REFORGING_TABLE);
+        if(Apotheosis.enableAdventure) {
+            if(event.getTabKey() == Adventure.Tabs.ADVENTURE.getKey()) {
+                event.accept(Adventure.Items.ANCIENT_MATERIAL.get());
+                event.accept(AncientReforgingRegistry.Blocks.ANCIENT_REFORGING_TABLE);
+            }
         }
     }
 
@@ -62,6 +68,14 @@ public class AncientReforging
         {
             MenuScreens.register(AncientReforgingRegistry.Menus.ANCIENT_REFORGING.get(), AncientReforgingScreen::new);
             BlockEntityRenderers.register(AncientReforgingRegistry.BlockEntities.ANCIENT_REFORGING_TABLE.get(), k -> new AncientReforgingTableTileRenderer());
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = Apotheosis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModBusSub {
+        @SubscribeEvent
+        public static void models(ModelEvent.RegisterAdditional e) {
+            e.register(new ResourceLocation(Apotheosis.MODID, "item/hammer"));
         }
     }
 }

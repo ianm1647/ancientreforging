@@ -64,9 +64,8 @@ public class AncientReforgingTableBlock extends Block implements TickingEntityBl
 
     @Override
     public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> list, TooltipFlag pFlag) {
-        list.add(Component.translatable(Blocks.REFORGING_TABLE.get().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
-        if (this.maxRarity < RarityRegistry.getMaxRarity().get().ordinal())
-            list.add(Component.translatable(Blocks.REFORGING_TABLE.get().getDescriptionId() + ".desc2", this.getMaxRarity().toComponent()).withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc").withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc2", this.getMaxRarity().toComponent()).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

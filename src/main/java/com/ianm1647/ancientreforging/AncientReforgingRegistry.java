@@ -3,6 +3,9 @@ package com.ianm1647.ancientreforging;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableBlock;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
+import dev.shadowsoffire.apotheosis.Apotheosis;
+import dev.shadowsoffire.apotheosis.adventure.affix.salvaging.SalvageItem;
+import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.registry.DeferredHelper;
 import net.minecraft.world.inventory.MenuType;
@@ -19,9 +22,13 @@ public class AncientReforgingRegistry {
 
     private static final DeferredHelper R = DeferredHelper.create(AncientReforging.MODID);
 
-    public static class Items {
+    private static class Items {
 
-        private static class bootstrap {}
+        private static RegistryObject<Item> rarityMat(String id) {
+            return R.item(id + "_material", () -> new SalvageItem(RarityRegistry.INSTANCE.holder(Apotheosis.loc(id)), new Item.Properties()));
+        }
+
+        private static void bootstrap() {}
     }
 
     public static class Blocks {
@@ -55,6 +62,7 @@ public class AncientReforgingRegistry {
     }
 
     public static void bootstrap() {
+        Items.bootstrap();
         Blocks.bootstrap();
         BlockEntities.bootstrap();
         Menus.bootstrap();
