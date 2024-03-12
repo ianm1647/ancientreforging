@@ -1,13 +1,18 @@
 package com.ianm1647.ancientreforging;
 
+import com.google.common.collect.ImmutableSet;
+import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
 import com.ianm1647.ancientreforging.screen.AncientReforgingScreen;
 import com.mojang.logging.LogUtils;
 import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.adventure.Adventure;
+import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
+import dev.shadowsoffire.placebo.registry.RegistryEvent;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,6 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 @Mod(AncientReforging.MODID)

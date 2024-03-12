@@ -1,13 +1,17 @@
 package com.ianm1647.ancientreforging;
 
+import com.google.common.collect.ImmutableSet;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableBlock;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
 import dev.shadowsoffire.apotheosis.Apotheosis;
+import dev.shadowsoffire.apotheosis.adventure.Adventure;
 import dev.shadowsoffire.apotheosis.adventure.affix.salvaging.SalvageItem;
 import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
+import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.registry.DeferredHelper;
+import dev.shadowsoffire.placebo.registry.RegObjHelper;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -21,6 +25,7 @@ import java.util.function.Supplier;
 public class AncientReforgingRegistry {
 
     private static final DeferredHelper R = DeferredHelper.create(AncientReforging.MODID);
+    public static final RegObjHelper E = new RegObjHelper(AncientReforging.MODID);
 
     private static class Items {
 
@@ -50,8 +55,7 @@ public class AncientReforgingRegistry {
 
     public static class BlockEntities {
         public static final RegistryObject<BlockEntityType<AncientReforgingTableTile>> ANCIENT_REFORGING_TABLE = R.blockEntity("ancient_reforging_table", () ->
-                BlockEntityType.Builder.of(AncientReforgingTableTile::new, Blocks.ANCIENT_REFORGING_TABLE.get()).build(null));
-
+                new TickingBlockEntityType<>(AncientReforgingTableTile::new, ImmutableSet.of(Blocks.ANCIENT_REFORGING_TABLE.get()), true, false));
         private static void bootstrap() {}
     }
 
