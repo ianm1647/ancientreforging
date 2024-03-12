@@ -31,7 +31,9 @@ public class AncientReforging
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        AncientReforgingRegistry.bootstrap();
+        if(Apotheosis.enableAdventure) {
+            AncientReforgingRegistry.bootstrap();
+        }
 
         modEventBus.addListener(this::commonSetup);
 
