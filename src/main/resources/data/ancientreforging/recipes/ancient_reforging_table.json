@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [{
-	"type": "apotheosis:module",
+  "fabric:load_conditions": [{
+    "condition": "zenith:module",
     "module": "adventure"
   }],
   "group": "something",
@@ -12,13 +12,13 @@
   ],
   "key": {
     "N": {
-      "item": "apotheosis:ancient_material"
+      "item": "zenith:ancient_material"
     },
 	"G": {
-      "item": "apotheosis:mythic_material"
+      "item": "zenith:mythic_material"
     },
 	"E": {
-      "item": "apotheosis:reforging_table"
+      "item": "zenith:reforging_table"
     },
 	"B": {
       "item": "minecraft:end_stone_bricks"

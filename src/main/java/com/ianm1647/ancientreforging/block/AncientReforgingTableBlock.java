@@ -1,88 +1,111 @@
 package com.ianm1647.ancientreforging.block;
 
-import dev.shadowsoffire.apotheosis.adventure.Adventure.Blocks;
+import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
+import dev.shadowsoffire.apotheosis.adventure.Adventure;
 import dev.shadowsoffire.apotheosis.adventure.loot.LootRarity;
 import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingEntityBlock;
-import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.menu.SimplerMenuProvider;
-import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 import java.util.List;
 
 public class AncientReforgingTableBlock extends Block implements TickingEntityBlock {
-    public static final Component TITLE = Component.translatable("container.apotheosis.reforge");
-    public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
-
+    public static final Text TITLE = Text.translatable("container.zenith.reforge");
+    public static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
     protected final int maxRarity;
 
-    public AncientReforgingTableBlock(Properties properties, int maxRarity) {
+    public AncientReforgingTableBlock(AbstractBlock.Settings properties, int maxRarity) {
         super(properties);
         this.maxRarity = maxRarity;
     }
 
     public LootRarity getMaxRarity() {
-        return RarityRegistry.byOrdinal(this.maxRarity).get();
+        return (LootRarity) RarityRegistry.byOrdinal(this.maxRarity).get();
     }
 
-    @Override
-    public boolean useShapeForLightOcclusion(BlockState pState) {
+    public boolean hasSidedTransparency(BlockState pState) {
         return true;
     }
 
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public VoxelShape getOutlineShape(BlockState pState, BlockView pLevel, BlockPos pPos, ShapeContext pContext) {
         return SHAPE;
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        return MenuUtil.openGui(player, pos, AncientReforgingMenu::new);
+    public ActionResult onUse(BlockState state, World level, final BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!level.isClient) {
+            player.openHandledScreen(new ExtendedScreenHandlerFactory() {
+                public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+                    buf.writeBlockPos(pos);
+                }
+
+                public Text getDisplayName() {
+                    return Text.translatable("block.zenith.salvaging_table");
+                }
+
+                public ScreenHandler createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+                    return new AncientReforgingMenu(i, inventory, pos);
+                }
+            });
+            return ActionResult.SUCCESS;
+        } else {
+            return ActionResult.CONSUME;
+        }
     }
 
-    @Override
-    public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+    public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
         return new SimplerMenuProvider<>(world, pos, AncientReforgingMenu::new);
     }
 
-    @Override
-    public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> list, TooltipFlag pFlag) {
-        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc").withStyle(ChatFormatting.GRAY));
-        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc2", this.getMaxRarity().toComponent()).withStyle(ChatFormatting.GRAY));
+    @Environment(EnvType.CLIENT)
+    public void appendTooltip(ItemStack pStack, BlockView pLevel, List<Text> list, TooltipContext pFlag) {
+        list.add(Text.translatable(Adventure.Blocks.REFORGING_TABLE.getTranslationKey() + ".desc").formatted(Formatting.GRAY));
+        list.add(Text.translatable(Adventure.Blocks.REFORGING_TABLE.getTranslationKey() + ".desc2", this.getMaxRarity().toComponent()).formatted(Formatting.GRAY));
+
     }
 
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+    public BlockEntity createBlockEntity(BlockPos pPos, BlockState pState) {
         return new AncientReforgingTableTile(pPos, pState);
     }
 
-    @Override
+    /** @deprecated */
     @Deprecated
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() == this && newState.getBlock() == this) return;
-        BlockEntity te = world.getBlockEntity(pos);
-        if (te instanceof AncientReforgingTableTile ref) {
-            for (int i = 0; i < ref.inv.getSlots(); i++) {
-                popResource(world, pos, ref.inv.getStackInSlot(i));
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != this || newState.getBlock() != this) {
+            BlockEntity te = world.getBlockEntity(pos);
+            if (te instanceof AncientReforgingTableTile) {
+                AncientReforgingTableTile ref = (AncientReforgingTableTile)te;
+
+                for(int i = 0; i < ref.inventory.stacks.size(); ++i) {
+                    dropStack(world, pos, ref.inventory.getStack(i));
+                }
             }
+
+            super.onStateReplaced(state, world, pos, newState, isMoving);
         }
-        super.onRemove(state, world, pos, newState, isMoving);
     }
 }

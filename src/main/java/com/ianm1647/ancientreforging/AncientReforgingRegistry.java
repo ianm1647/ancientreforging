@@ -4,71 +4,70 @@ import com.google.common.collect.ImmutableSet;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableBlock;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
-import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.adventure.Adventure;
-import dev.shadowsoffire.apotheosis.adventure.affix.salvaging.SalvageItem;
-import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
-import dev.shadowsoffire.placebo.menu.MenuUtil;
-import dev.shadowsoffire.placebo.registry.DeferredHelper;
-import dev.shadowsoffire.placebo.registry.RegObjHelper;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
+import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.util.Identifier;
 
 public class AncientReforgingRegistry {
 
-    private static final DeferredHelper R = DeferredHelper.create(AncientReforging.MODID);
-    public static final RegObjHelper E = new RegObjHelper(AncientReforging.MODID);
-
-    private static class Items {
-
-        private static RegistryObject<Item> rarityMat(String id) {
-            return R.item(id + "_material", () -> new SalvageItem(RarityRegistry.INSTANCE.holder(Apotheosis.loc(id)), new Item.Properties()));
-        }
-
-        private static void bootstrap() {}
+    public static void bootstrap() {
+        Blocks.bootstrap();
+        Tiles.bootstrap();
+        Menus.bootstrap();
     }
 
     public static class Blocks {
-        public static final RegistryObject<AncientReforgingTableBlock> ANCIENT_REFORGING_TABLE = registerBlock("ancient_reforging_table",
-                () -> new AncientReforgingTableBlock(BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(4, 1000F), 5));
+        public static final Block ANCIENT_REFORGING_TABLE = block("ancient_reforging_table", new AncientReforgingTableBlock(AbstractBlock.Settings.create().requiresTool().strength(4.0F, 1000.0F), 5));
 
-        private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-            RegistryObject<T> toReturn = R.block(name, block);
-            registerBlockItem(name, toReturn);
-            return toReturn;
+        private static Block block(String name, Block block) {
+            blockItem(name, block);
+            return Registry.register(Registries.BLOCK, new Identifier(AncientReforging.MODID, name), block);
         }
 
-        private static <T extends Block>RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-            return R.item(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        private static Item blockItem(String name, Block block) {
+            Item item = Registry.register(Registries.ITEM, new Identifier(AncientReforging.MODID, name),
+                    new BlockItem(block, new FabricItemSettings()));
+            ItemGroupEvents.modifyEntriesEvent(Adventure.Tabs.ADVENTURE).register(entries -> entries.add(item));
+            return item;
         }
-
-        private static void bootstrap() {}
+        private static void bootstrap() {
+        }
     }
 
-    public static class BlockEntities {
-        public static final RegistryObject<BlockEntityType<AncientReforgingTableTile>> ANCIENT_REFORGING_TABLE = R.blockEntity("ancient_reforging_table", () ->
-                new TickingBlockEntityType<>(AncientReforgingTableTile::new, ImmutableSet.of(Blocks.ANCIENT_REFORGING_TABLE.get()), true, false));
-        private static void bootstrap() {}
+    public static class Tiles {
+        public static final BlockEntityType<AncientReforgingTableTile> ANCIENT_REFORGING_TABLE = blockEntity("ancient_reforging_table", new TickingBlockEntityType<>(AncientReforgingTableTile::new, ImmutableSet.of(Blocks.ANCIENT_REFORGING_TABLE), true, false));
+        ;
+
+        private static void bootstrap() {
+            ItemStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.storage, ANCIENT_REFORGING_TABLE);
+        }
+
+        public static <T extends BlockEntity> BlockEntityType<T> blockEntity(String id, BlockEntityType<T> be) {
+            return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(AncientReforging.MODID, id), be);
+        }
     }
 
     public static class Menus {
-        public static final RegistryObject<MenuType<AncientReforgingMenu>> ANCIENT_REFORGING = R.menu("ancient_reforging", () -> MenuUtil.posType(AncientReforgingMenu::new));
+        public static final ScreenHandlerType<AncientReforgingMenu> ANCIENT_REFORGING = (ScreenHandlerType<AncientReforgingMenu>) menu("ancient_reforging", new ExtendedScreenHandlerType<>(AncientReforgingMenu::new));
 
-        private static void bootstrap() {}
+        private static ScreenHandlerType<?> menu(String name, ScreenHandlerType<?> type) {
+            return Registry.register(Registries.SCREEN_HANDLER, new Identifier(AncientReforging.MODID, name), type);
+        }
+        private static void bootstrap() {
+        }
     }
 
-    public static void bootstrap() {
-        Items.bootstrap();
-        Blocks.bootstrap();
-        BlockEntities.bootstrap();
-        Menus.bootstrap();
-    }
 }

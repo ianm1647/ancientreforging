@@ -2,8 +2,8 @@
     "dimensions": [
         "minecraft:the_end"
     ],
-    "min_rarity": "apotheosis:ancient",
-    "max_rarity": "apotheosis:ancient",
+    "min_rarity": "zenith:ancient",
+    "max_rarity": "zenith:ancient",
     "weight": 5,
     "quality": 20.0,
     "stack": {

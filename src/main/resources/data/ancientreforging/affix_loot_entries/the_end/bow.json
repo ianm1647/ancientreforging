@@ -4,8 +4,8 @@
 	"stack": {
 		"item": "minecraft:bow"
 	},
-	"min_rarity": "apotheosis:ancient",
-	"max_rarity": "apotheosis:ancient",
+	"min_rarity": "zenith:ancient",
+	"max_rarity": "zenith:ancient",
 	"dimensions": [
 		"minecraft:the_end"
 	]

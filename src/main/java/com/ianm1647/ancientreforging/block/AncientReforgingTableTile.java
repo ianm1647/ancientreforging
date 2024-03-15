@@ -1,56 +1,58 @@
 package com.ianm1647.ancientreforging.block;
 
 import com.ianm1647.ancientreforging.AncientReforgingRegistry;
-import dev.shadowsoffire.apotheosis.Apoth.RecipeTypes;
 import dev.shadowsoffire.apotheosis.adventure.Adventure.Items;
+import dev.shadowsoffire.apotheosis.adventure.Adventure.RecipeTypes;
 import dev.shadowsoffire.apotheosis.adventure.affix.reforging.ReforgingRecipe;
 import dev.shadowsoffire.apotheosis.adventure.loot.LootRarity;
 import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingBlockEntity;
-import dev.shadowsoffire.placebo.cap.InternalItemHandler;
 import dev.shadowsoffire.placebo.reload.DynamicHolder;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.fabric.api.transfer.v1.item.InventoryStorage;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class AncientReforgingTableTile extends BlockEntity implements TickingBlockEntity {
-
+public class AncientReforgingTableTile extends BlockEntity implements ExtendedScreenHandlerFactory, TickingBlockEntity {
     public int time = 0;
     public boolean step1 = true;
+    protected final BlockPos pos;
+    public SimpleInventory inventory = new SimpleInventory(2) {
+        public boolean isValid(int slot, ItemStack stack) {
+            return slot == 0 ? AncientReforgingTableTile.this.isValidRarityMat(stack) : stack.isOf(Items.GEM_DUST);
+        }
 
-    public InternalItemHandler inv = new InternalItemHandler(2){
-        @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            if (slot == 0) return AncientReforgingTableTile.this.isValidRarityMat(stack);
-            return stack.is(Items.GEM_DUST.get());
-        };
-
-        @Override
-        protected void onContentsChanged(int slot) {
-            AncientReforgingTableTile.this.setChanged();
-        };
+        public void markDirty() {
+            AncientReforgingTableTile.this.markDirty();
+        }
     };
+    public InventoryStorage storage;
 
-    public AncientReforgingTableTile(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(AncientReforgingRegistry.BlockEntities.ANCIENT_REFORGING_TABLE.get(), pWorldPosition, pBlockState);
+    public AncientReforgingTableTile(BlockPos pPos, BlockState pBlockState) {
+        super(AncientReforgingRegistry.Tiles.ANCIENT_REFORGING_TABLE, pPos, pBlockState);
+        this.storage = InventoryStorage.of(this.inventory, null);
+        this.pos = pPos;
     }
 
     public LootRarity getMaxRarity() {
-        return ((AncientReforgingTableBlock) this.getBlockState().getBlock()).getMaxRarity();
+        return ((AncientReforgingTableBlock)this.getCachedState().getBlock()).getMaxRarity();
     }
 
     public boolean isValidRarityMat(ItemStack stack) {
@@ -58,68 +60,58 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
         return rarity.isBound() && this.getMaxRarity().isAtLeast(rarity.get()) && this.getRecipeFor(rarity.get()) != null;
     }
 
-    @Nullable
-    public ReforgingRecipe getRecipeFor(LootRarity rarity) {
-        return this.level.getRecipeManager().getAllRecipesFor(RecipeTypes.REFORGING).stream().filter(r -> r.rarity().get() == rarity).findFirst().orElse(null);
+    public @Nullable ReforgingRecipe getRecipeFor(LootRarity rarity) {
+        return this.world.getRecipeManager().listAllOfType(RecipeTypes.REFORGING).stream().filter((r) -> r.rarity().get() == rarity).findFirst().orElse(null);
     }
 
-    @Override
-    public void clientTick(Level pLevel, BlockPos pPos, BlockState pState) {
-        Player player = pLevel.getNearestPlayer(pPos.getX() + 0.5D, pPos.getY() + 0.5D, pPos.getZ() + 0.5D, 4, false);
-
+    public void clientTick(World pLevel, BlockPos pPos, BlockState pState) {
+        PlayerEntity player = pLevel.getClosestPlayer((double)pPos.getX() + 0.5, (double)pPos.getY() + 0.5, (double)pPos.getZ() + 0.5, 4.0, false);
         if (player != null) {
-            this.time++;
-        }
-        else {
-            if (this.time == 0 && this.step1) return;
-            else this.time++;
+            ++this.time;
+        } else {
+            if (this.time == 0 && this.step1) {
+                return;
+            }
+
+            ++this.time;
         }
 
         if (this.step1 && this.time == 59) {
             this.step1 = false;
             this.time = 0;
-        }
-        else if (this.time == 4 && !this.step1) {
-            RandomSource rand = pLevel.random;
-            for (int i = 0; i < 6; i++) {
-                pLevel.addParticle(ParticleTypes.CRIT, pPos.getX() + 0.5 - 0.1 * rand.nextDouble(), pPos.getY() + 13 / 16D, pPos.getZ() + 0.5 + 0.1 * rand.nextDouble(), 0, 0, 0);
+        } else if (this.time == 4 && !this.step1) {
+            Random rand = pLevel.random;
+
+            for(int i = 0; i < 6; ++i) {
+                pLevel.addParticle(ParticleTypes.CRIT, (double)pPos.getX() + 0.5 - 0.1 * rand.nextDouble(), (double)pPos.getY() + 0.8125, (double)pPos.getZ() + 0.5 + 0.1 * rand.nextDouble(), 0.0, 0.0, 0.0);
             }
-            pLevel.playLocalSound(pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS, 0.03F, 1.7F + rand.nextFloat() * 0.2F, true);
+
+            pLevel.playSound((double)pPos.getX(), (double)pPos.getY(), (double)pPos.getZ(), SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 0.03F, 1.7F + rand.nextFloat() * 0.2F, true);
             this.step1 = true;
             this.time = 0;
         }
+
     }
 
-    @Override
-    public void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        tag.put("inventory", this.inv.serializeNBT());
+    public void writeNbt(NbtCompound tag) {
+        super.writeNbt(tag);
+        Inventories.writeNbt(tag, this.inventory.stacks);
     }
 
-    @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        this.inv.deserializeNBT(tag.getCompound("inventory"));
+    public void readNbt(NbtCompound tag) {
+        super.readNbt(tag);
+        Inventories.readNbt(tag, this.inventory.stacks);
     }
 
-    LazyOptional<IItemHandler> invCap = LazyOptional.of(() -> this.inv);
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) return this.invCap.cast();
-        return super.getCapability(cap, side);
+    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+        buf.writeBlockPos(this.pos);
     }
 
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        this.invCap.invalidate();
+    public Text getDisplayName() {
+        return Text.translatable("block.zenith.reforging_table");
     }
 
-    @Override
-    public void reviveCaps() {
-        super.reviveCaps();
-        this.invCap = LazyOptional.of(() -> this.inv);
+    public @Nullable ScreenHandler createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+        return null;
     }
-
 }
