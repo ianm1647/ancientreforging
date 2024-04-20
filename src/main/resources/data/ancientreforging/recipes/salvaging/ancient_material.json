@@ -1,0 +1,18 @@
+{
+  "type": "zenith:salvaging",
+  "conditions": [{
+    "type": "zenith:module",
+    "module": "adventure"
+  }],
+  "input": {
+    "type": "zenith:affix_item",
+    "rarity": "zenith:ancient"
+  },
+  "outputs": [{
+    "min_count": 1,
+    "max_count": 3,
+    "stack": {
+      "item": "zenith:ancient_material"
+    }
+  }]
+}
