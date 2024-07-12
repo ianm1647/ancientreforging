@@ -6,6 +6,6 @@
     "type": "apotheosis:reforging",
     "rarity": "apotheosis:ancient",
     "material_cost": 3,
-    "dust_cost": 10,
+    "sigil_cost": 10,
     "level_cost": 125
 }
