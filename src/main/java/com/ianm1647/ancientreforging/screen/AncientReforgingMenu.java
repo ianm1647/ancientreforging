@@ -2,12 +2,12 @@ package com.ianm1647.ancientreforging.screen;
 
 import javax.annotation.Nullable;
 
+import com.ianm1647.ancientreforging.AncientReforgingRegistry;
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import org.jetbrains.annotations.NotNull;
 
 import dev.shadowsoffire.apotheosis.Apoth.Items;
-import dev.shadowsoffire.apotheosis.Apoth.Menus;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
 import dev.shadowsoffire.apotheosis.loot.LootController;
 import dev.shadowsoffire.apotheosis.loot.LootRarity;
@@ -42,7 +42,7 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
     protected int seed = -1;
 
     public AncientReforgingMenu(int id, Inventory inv, BlockPos pos) {
-        super(Menus.REFORGING, id, inv, pos);
+        super(AncientReforgingRegistry.Menus.ANCIENT_REFORGING, id, inv, pos);
         this.player = inv.player;
         this.addSlot(new UpdatingSlot(this.itemInv, 0, 81, 62, stack -> !LootCategory.forItem(stack).isNone()){
             @Override

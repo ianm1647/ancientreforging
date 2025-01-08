@@ -7,13 +7,16 @@ import dev.shadowsoffire.apotheosis.affix.salvaging.SalvageItem;
 import dev.shadowsoffire.apotheosis.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingBlockEntityType;
 import dev.shadowsoffire.placebo.registry.DeferredHelper;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.bus.api.IEventBus;
 
 public class AncientReforgingRegistry {
 
@@ -32,15 +35,14 @@ public class AncientReforgingRegistry {
         public static final Holder<Item> ANCIENT_REFORGING_TABLE = R.blockItem("ancient_reforging_table", Blocks.ANCIENT_REFORGING_TABLE, p -> p.rarity(Rarity.EPIC));
 
         private static Holder<Item> rarityMat(String id) {
-            return R.item(id + "_material", () -> new SalvageItem(RarityRegistry.INSTANCE.holder(ResourceLocation.fromNamespaceAndPath(AncientReforging.MODID, id)), new Item.Properties()));
+            return R.item(id + "_material", () -> new SalvageItem(RarityRegistry.INSTANCE.holder(AncientReforging.loc(id)), new Item.Properties().component(DataComponents.ITEM_NAME, Component.translatable(id).withStyle(ChatFormatting.OBFUSCATED))));
         }
 
         private static void bootstrap() {}
     }
 
     public static class BlockEntities {
-        public static final BlockEntityType<AncientReforgingTableTile> ANCIENT_REFORGING_TABLE = R.tickingBlockEntity("ancient_reforging_table", AncientReforgingTableTile::new,
-                TickingBlockEntityType.TickSide.CLIENT, Blocks.ANCIENT_REFORGING_TABLE);
+        public static final BlockEntityType<AncientReforgingTableTile> ANCIENT_REFORGING_TABLE = R.tickingBlockEntity("ancient_reforging_table", AncientReforgingTableTile::new, TickingBlockEntityType.TickSide.CLIENT, Blocks.ANCIENT_REFORGING_TABLE);
         private static void bootstrap() {}
     }
 
@@ -50,7 +52,9 @@ public class AncientReforgingRegistry {
         private static void bootstrap() {}
     }
 
-    public static void bootstrap() {
+    public static void bootstrap(IEventBus bus) {
+        bus.register(R);
+
         Blocks.bootstrap();
         Items.bootstrap();
         BlockEntities.bootstrap();

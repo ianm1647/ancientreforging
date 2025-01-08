@@ -1,10 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
-  "conditions": [{
-	"type": "apotheosis:module",
-    "module": "adventure"
-  }],
-  "group": "something",
+  "category": "misc",
+  "group": "ancientreforging",
   "pattern": [
     " N ",
     "GEG",
@@ -25,7 +22,7 @@
     }
   },
   "result": {
-    "item": "ancientreforging:ancient_reforging_table",
+    "id": "ancientreforging:ancient_reforging_table",
     "count": 1
   }
 }

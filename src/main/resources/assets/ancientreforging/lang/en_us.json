@@ -1,5 +1,7 @@
 {
   "block.ancientreforging.ancient_reforging_table": "Ancient Reforging Table",
-  "block.ancientreforging.ancient_reforging_table.desc": "Uses Gem Dust and Rarity Materials to reroll affixes",
-  "block.ancientreforging.ancient_reforging_table.desc2": "Max Rarity: %s"
+  "block.ancientreforging.ancient_reforging_table.desc": "Uses Sigils of Rebirth and Rarity Materials to reforge items",
+
+  "item.ancientreforging.ancient_material": "Manifestation of Infinity",
+  "rarity.apothancientreforgingeosis:ancient": "Ancient"
 }

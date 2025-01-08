@@ -2,7 +2,6 @@ package com.ianm1647.ancientreforging;
 
 import com.ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
 import com.ianm1647.ancientreforging.screen.AncientReforgingScreen;
-import dev.shadowsoffire.apotheosis.Apotheosis;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,7 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = Apotheosis.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = AncientReforging.MODID, value = Dist.CLIENT)
 public class AncientReforgingClient {
 
     @SubscribeEvent

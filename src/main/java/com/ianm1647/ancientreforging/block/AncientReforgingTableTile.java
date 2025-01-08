@@ -1,9 +1,9 @@
 package com.ianm1647.ancientreforging.block;
 
+import com.ianm1647.ancientreforging.AncientReforgingRegistry;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import org.jetbrains.annotations.Nullable;
 
-import dev.shadowsoffire.apotheosis.Apoth;
 import dev.shadowsoffire.apotheosis.Apoth.Items;
 import dev.shadowsoffire.apotheosis.Apoth.RecipeTypes;
 import dev.shadowsoffire.apotheosis.loot.LootRarity;
@@ -45,7 +45,7 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
     };
 
     public AncientReforgingTableTile(BlockPos pWorldPosition, BlockState pBlockState) {
-        super(Apoth.Tiles.REFORGING_TABLE, pWorldPosition, pBlockState);
+        super(AncientReforgingRegistry.BlockEntities.ANCIENT_REFORGING_TABLE, pWorldPosition, pBlockState);
     }
 
     public boolean isValidRarityMat(ItemStack stack) {
