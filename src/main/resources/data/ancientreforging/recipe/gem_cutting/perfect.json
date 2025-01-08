@@ -1,0 +1,20 @@
+{
+  "type": "apotheosis:purity_upgrade",
+  "left": [
+    {
+      "count": 9,
+      "item": "apotheosis:gem_dust"
+    }
+  ],
+  "purity": "flawless",
+  "right": [
+    {
+      "count": 3,
+      "item": "apotheosis:mythic_material"
+    },
+    {
+      "count": 1,
+      "item": "ancientreforging:ancient_material"
+    }
+  ]
+}

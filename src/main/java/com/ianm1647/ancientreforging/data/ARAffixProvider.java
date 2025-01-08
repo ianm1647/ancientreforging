@@ -1,7 +1,6 @@
 package com.ianm1647.ancientreforging.data;
 
 import com.ianm1647.ancientreforging.AncientReforging;
-import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.affix.*;
 import dev.shadowsoffire.apotheosis.affix.effect.*;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
@@ -597,7 +596,6 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .value(ancient, 500, 700)
                 .build());
 
-        this.futures.add(CompletableFuture.runAsync(RarityRegistry.INSTANCE::validateExistingHolders));
         this.futures.add(CompletableFuture.runAsync(AffixRegistry.INSTANCE::validateExistingHolders));
     }
 

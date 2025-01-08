@@ -1,6 +1,7 @@
 package com.ianm1647.ancientreforging;
 
 import com.ianm1647.ancientreforging.data.ARAffixProvider;
+import com.ianm1647.ancientreforging.data.ARInvaderProvider;
 import com.ianm1647.ancientreforging.data.ARRarityProvider;
 import com.mojang.logging.LogUtils;
 import dev.shadowsoffire.apotheosis.Apoth;
@@ -41,10 +42,10 @@ public class AncientReforging
     }
 
     public void data(GatherDataEvent e) {
-        DataProvider.INDENT_WIDTH.set(4);
         DataGenBuilder.create(MODID)
                 .provider(ARRarityProvider::new)
                 .provider(ARAffixProvider::new)
+                .provider(ARInvaderProvider::new)
                 .build(e);
     }
 

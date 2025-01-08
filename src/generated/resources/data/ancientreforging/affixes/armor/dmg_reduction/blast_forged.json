@@ -1,0 +1,21 @@
+{
+    "type": "apotheosis:damage_reduction",
+    "categories": [
+        "chestplate",
+        "leggings"
+    ],
+    "damage_type": "explosion",
+    "definition": {
+        "affix_type": "basic_effect",
+        "exclusive_set": [],
+        "weights": {
+            "weight": 25
+        }
+    },
+    "values": {
+        "ancientreforging:ancient": {
+            "min": 0.3,
+            "max": 0.75
+        }
+    }
+}

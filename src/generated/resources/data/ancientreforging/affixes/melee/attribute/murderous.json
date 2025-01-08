@@ -1,0 +1,22 @@
+{
+    "type": "apotheosis:attribute",
+    "attribute": "minecraft:generic.attack_damage",
+    "categories": [
+        "trident",
+        "melee_weapon"
+    ],
+    "definition": {
+        "affix_type": "stat",
+        "exclusive_set": [],
+        "weights": {
+            "weight": 25
+        }
+    },
+    "operation": "add_multiplied_base",
+    "values": {
+        "ancientreforging:ancient": {
+            "min": 0.5,
+            "max": 1.15
+        }
+    }
+}

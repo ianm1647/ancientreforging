@@ -62,7 +62,7 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
                 .rule(new LootRule.SelectLootRule(0.85F, // 95% chance for 1-3 sockets, 5% chance for guaranteed 4 sockets.
-                        new LootRule.SocketLootRule(1, 4),
+                        new LootRule.SocketLootRule(3, 4),
                         new LootRule.SocketLootRule(5, 5)))
                 .rule(new LootRule.SelectLootRule(0.95F, // 99% chance to roll a durability bonus, 1% to be unbreakable.
                         new LootRule.DurabilityLootRule(0.6F, 0.9F),

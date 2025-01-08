@@ -1,0 +1,21 @@
+{
+    "type": "apotheosis:attribute",
+    "attribute": "minecraft:generic.knockback_resistance",
+    "categories": [
+        "shield"
+    ],
+    "definition": {
+        "affix_type": "stat",
+        "exclusive_set": [],
+        "weights": {
+            "weight": 25
+        }
+    },
+    "operation": "add_value",
+    "values": {
+        "ancientreforging:ancient": {
+            "min": 0.5,
+            "max": 0.7
+        }
+    }
+}
