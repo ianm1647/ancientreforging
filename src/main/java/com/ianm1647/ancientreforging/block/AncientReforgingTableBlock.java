@@ -1,18 +1,17 @@
 package com.ianm1647.ancientreforging.block;
 
+import com.ianm1647.ancientreforging.AncientReforgingRegistry;
 import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
-import dev.shadowsoffire.apotheosis.adventure.loot.LootRarity;
-import dev.shadowsoffire.apotheosis.adventure.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingEntityBlock;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.menu.SimplerMenuProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -29,58 +28,52 @@ import java.util.List;
 
 public class AncientReforgingTableBlock extends Block implements TickingEntityBlock {
     public static final Component TITLE = Component.translatable("container.apotheosis.reforge");
-    public static final VoxelShape SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-    protected final int maxRarity;
+    public static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D);
 
-    public AncientReforgingTableBlock(BlockBehaviour.Properties properties, int maxRarity) {
+    public AncientReforgingTableBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.maxRarity = maxRarity;
     }
 
-    public LootRarity getMaxRarity() {
-        return (LootRarity)RarityRegistry.byOrdinal(this.maxRarity).get();
-    }
-
+    @Override
     public boolean useShapeForLightOcclusion(BlockState pState) {
         return true;
     }
 
+    @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
     }
 
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         return MenuUtil.openGui(player, pos, AncientReforgingMenu::new);
     }
 
+    @Override
     public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
-        return new SimplerMenuProvider(world, pos, AncientReforgingMenu::new);
+        return new SimplerMenuProvider<>(world, pos, AncientReforgingMenu::new);
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, BlockGetter pLevel, List<Component> list, TooltipFlag pFlag) {
-        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc").withStyle(ChatFormatting.GRAY));
-        list.add(Component.translatable("block.ancientreforging.ancient_reforging_table.desc2", this.getMaxRarity().toComponent()).withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
+        list.add(Component.translatable(AncientReforgingRegistry.Blocks.ANCIENT_REFORGING_TABLE.value().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
     }
 
+    @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new AncientReforgingTableTile(pPos, pState);
     }
 
-    /** @deprecated */
+    @Override
     @Deprecated
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != this || newState.getBlock() != this) {
-            BlockEntity te = world.getBlockEntity(pos);
-            if (te instanceof AncientReforgingTableTile) {
-                AncientReforgingTableTile ref = (AncientReforgingTableTile)te;
-
-                for(int i = 0; i < ref.inv.getSlots(); ++i) {
-                    popResource(world, pos, ref.inv.getStackInSlot(i));
-                }
+        if (state.getBlock() == this && newState.getBlock() == this) return;
+        BlockEntity te = world.getBlockEntity(pos);
+        if (te instanceof AncientReforgingTableTile ref) {
+            for (int i = 0; i < ref.inv.getSlots(); i++) {
+                popResource(world, pos, ref.inv.getStackInSlot(i));
             }
-
-            super.onRemove(state, world, pos, newState, isMoving);
         }
+        super.onRemove(state, world, pos, newState, isMoving);
     }
 }
