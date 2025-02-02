@@ -1,4 +1,4 @@
-package com.ianm1647.ancientreforging.block;
+package ianm1647.ancientreforging.block;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

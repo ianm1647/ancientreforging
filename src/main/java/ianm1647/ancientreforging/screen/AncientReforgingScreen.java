@@ -1,4 +1,4 @@
-package com.ianm1647.ancientreforging.screen;
+package ianm1647.ancientreforging.screen;
 
 import java.util.ArrayList;
 import java.util.List;

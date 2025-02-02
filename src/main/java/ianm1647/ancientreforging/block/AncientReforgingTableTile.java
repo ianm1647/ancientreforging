@@ -1,6 +1,6 @@
-package com.ianm1647.ancientreforging.block;
+package ianm1647.ancientreforging.block;
 
-import com.ianm1647.ancientreforging.AncientReforgingRegistry;
+import ianm1647.ancientreforging.AncientReforgingRegistry;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import org.jetbrains.annotations.Nullable;
 

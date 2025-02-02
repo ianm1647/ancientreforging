@@ -1,7 +1,7 @@
-package com.ianm1647.ancientreforging;
+package ianm1647.ancientreforging;
 
-import com.ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
-import com.ianm1647.ancientreforging.screen.AncientReforgingScreen;
+import ianm1647.ancientreforging.block.AncientReforgingTableTileRenderer;
+import ianm1647.ancientreforging.screen.AncientReforgingScreen;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

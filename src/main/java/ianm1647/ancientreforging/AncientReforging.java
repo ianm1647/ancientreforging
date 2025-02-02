@@ -1,14 +1,11 @@
-package com.ianm1647.ancientreforging;
+package ianm1647.ancientreforging;
 
-import com.ianm1647.ancientreforging.data.ARAffixProvider;
-import com.ianm1647.ancientreforging.data.ARInvaderProvider;
-import com.ianm1647.ancientreforging.data.ARRarityProvider;
+import ianm1647.ancientreforging.data.ARAffixProvider;
+import ianm1647.ancientreforging.data.ARInvaderProvider;
+import ianm1647.ancientreforging.data.ARRarityProvider;
 import com.mojang.logging.LogUtils;
 import dev.shadowsoffire.apotheosis.Apoth;
-import dev.shadowsoffire.apotheosis.data.*;
 import dev.shadowsoffire.placebo.datagen.DataGenBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;

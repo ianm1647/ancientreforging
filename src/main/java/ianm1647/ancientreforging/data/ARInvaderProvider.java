@@ -1,9 +1,9 @@
-package com.ianm1647.ancientreforging.data;
+package ianm1647.ancientreforging.data;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
 
-import com.ianm1647.ancientreforging.AncientReforging;
+import ianm1647.ancientreforging.AncientReforging;
 import org.spongepowered.include.com.google.common.base.Preconditions;
 
 import dev.shadowsoffire.apotheosis.Apoth;
@@ -57,7 +57,7 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                 .size(0.75, 3.7)
                 .basicData(c -> meleeGear(c)
                         .name(Component.literal(BasicBossData.NAME_GEN))
-                        .weights(TieredWeights.forAllTiers(DEFAULT_WEIGHT, DEFAULT_QUALITY))
+                        .weights(TieredWeights.forTiersAbove(WorldTier.PINNACLE, DEFAULT_WEIGHT, DEFAULT_QUALITY))
                         .constraints(Constraints.forDimension(Level.END))
                         .bonusLoot(Apoth.LootTables.BONUS_BOSS_DROPS)));
 
@@ -66,7 +66,7 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                 .size(1.25, 1.25)
                 .basicData(c -> rangedGear(c)
                         .name(Component.literal(BasicBossData.NAME_GEN))
-                        .weights(TieredWeights.forAllTiers(20, 2))
+                        .weights(TieredWeights.forTiersAbove(WorldTier.PINNACLE,20, 2))
                         .constraints(Constraints.forDimension(Level.END))
                         .bonusLoot(Apoth.LootTables.BONUS_BOSS_DROPS)));
 
@@ -75,7 +75,7 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                 .size(0.75, 2.45)
                 .basicData(c -> rangedGear(c)
                         .name(Component.literal(BasicBossData.NAME_GEN))
-                        .weights(TieredWeights.forTiersAbove(WorldTier.SUMMIT, 150, 5))
+                        .weights(TieredWeights.forTiersAbove(WorldTier.PINNACLE, 150, 5))
                         .constraints(Constraints.forDimension(Level.END))
                         .bonusLoot(Apoth.LootTables.BONUS_BOSS_DROPS, Apoth.LootTables.BONUS_RARE_BOSS_DROPS)));
 

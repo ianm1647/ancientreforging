@@ -1,9 +1,9 @@
-package com.ianm1647.ancientreforging.screen;
+package ianm1647.ancientreforging.screen;
 
 import javax.annotation.Nullable;
 
-import com.ianm1647.ancientreforging.AncientReforgingRegistry;
-import com.ianm1647.ancientreforging.block.AncientReforgingTableTile;
+import ianm1647.ancientreforging.AncientReforgingRegistry;
+import ianm1647.ancientreforging.block.AncientReforgingTableTile;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import org.jetbrains.annotations.NotNull;
 

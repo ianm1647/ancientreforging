@@ -2,7 +2,7 @@
     "type": "apotheosis:invader",
     "basic_data": {
         "bonus_loot": [
-            "apotheosis:bonus/boss_drops"
+            "apotheosis:entity/boss_drops"
         ],
         "constraints": {
             "dimensions": [
@@ -28,8 +28,10 @@
             ]
         },
         "weights": {
-            "quality": 2.0,
-            "weight": 20
+            "pinnacle": {
+                "quality": 2.0,
+                "weight": 20
+            }
         }
     },
     "entity": "minecraft:shulker",

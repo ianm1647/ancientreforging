@@ -1,7 +1,7 @@
-package com.ianm1647.ancientreforging.data;
+package ianm1647.ancientreforging.data;
 
-import com.ianm1647.ancientreforging.AncientReforging;
-import com.ianm1647.ancientreforging.AncientReforgingRegistry;
+import ianm1647.ancientreforging.AncientReforging;
+import ianm1647.ancientreforging.AncientReforgingRegistry;
 import dev.shadowsoffire.apotheosis.Apoth;
 import dev.shadowsoffire.apotheosis.affix.AffixType;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
@@ -50,7 +50,7 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                         .with(WorldTier.FRONTIER, 0, 0)
                         .with(WorldTier.ASCENT, 0, 0)
                         .with(WorldTier.SUMMIT, 0, 0)
-                        .with(WorldTier.PINNACLE, 50, 15))
+                        .with(WorldTier.PINNACLE, 10, 2))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
@@ -61,7 +61,7 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                 .rule(new LootRule.AffixLootRule(AffixType.BASIC_EFFECT))
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
-                .rule(new LootRule.SelectLootRule(0.85F, // 95% chance for 1-3 sockets, 5% chance for guaranteed 4 sockets.
+                .rule(new LootRule.SelectLootRule(0.85F, // 95% chance for 3-4 sockets, 5% chance for guaranteed 5 sockets.
                         new LootRule.SocketLootRule(3, 4),
                         new LootRule.SocketLootRule(5, 5)))
                 .rule(new LootRule.SelectLootRule(0.95F, // 99% chance to roll a durability bonus, 1% to be unbreakable.

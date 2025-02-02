@@ -54,7 +54,7 @@
             },
             "if_true": {
                 "type": "apotheosis:socket",
-                "min": 1,
+                "min": 3,
                 "max": 4
             }
         },
@@ -90,8 +90,8 @@
             "weight": 0
         },
         "pinnacle": {
-            "quality": 15.0,
-            "weight": 50
+            "quality": 2.0,
+            "weight": 10
         }
     }
 }

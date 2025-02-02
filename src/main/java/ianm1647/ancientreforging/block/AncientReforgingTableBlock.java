@@ -1,7 +1,7 @@
-package com.ianm1647.ancientreforging.block;
+package ianm1647.ancientreforging.block;
 
-import com.ianm1647.ancientreforging.AncientReforgingRegistry;
-import com.ianm1647.ancientreforging.screen.AncientReforgingMenu;
+import ianm1647.ancientreforging.AncientReforgingRegistry;
+import ianm1647.ancientreforging.screen.AncientReforgingMenu;
 import dev.shadowsoffire.placebo.block_entity.TickingEntityBlock;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.menu.SimplerMenuProvider;

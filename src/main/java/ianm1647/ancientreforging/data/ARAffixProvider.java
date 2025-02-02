@@ -1,6 +1,6 @@
-package com.ianm1647.ancientreforging.data;
+package ianm1647.ancientreforging.data;
 
-import com.ianm1647.ancientreforging.AncientReforging;
+import ianm1647.ancientreforging.AncientReforging;
 import dev.shadowsoffire.apotheosis.affix.*;
 import dev.shadowsoffire.apotheosis.affix.effect.*;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;

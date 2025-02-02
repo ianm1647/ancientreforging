@@ -2,7 +2,7 @@
     "type": "apotheosis:invader",
     "basic_data": {
         "bonus_loot": [
-            "apotheosis:bonus/boss_drops"
+            "apotheosis:entity/boss_drops"
         ],
         "constraints": {
             "dimensions": [
@@ -28,7 +28,9 @@
             ]
         },
         "weights": {
-            "weight": 100
+            "pinnacle": {
+                "weight": 100
+            }
         }
     },
     "entity": "minecraft:enderman",
