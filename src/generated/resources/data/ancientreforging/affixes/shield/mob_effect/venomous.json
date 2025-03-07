@@ -11,7 +11,7 @@
     "stack_on_reapply": true,
     "target": "block_attacker",
     "types": [
-        "shield"
+        "apotheosis:shield"
     ],
     "values": {
         "ancientreforging:ancient": {

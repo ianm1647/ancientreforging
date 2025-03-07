@@ -3,6 +3,7 @@ package ianm1647.ancientreforging.data;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
 
+import dev.shadowsoffire.apotheosis.data.InvaderProvider;
 import ianm1647.ancientreforging.AncientReforging;
 import org.spongepowered.include.com.google.common.base.Preconditions;
 
@@ -31,18 +32,18 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
-public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
+public class ARInvaderProvider extends InvaderProvider {
 
     public static final int DEFAULT_WEIGHT = 100;
     public static final int DEFAULT_QUALITY = 0;
 
     public ARInvaderProvider(PackOutput output, CompletableFuture<Provider> registries) {
-        super(output, registries, InvaderRegistry.INSTANCE);
+        super(output, registries);
     }
 
     @Override
     public String getName() {
-        return "Apothic Invaders";
+        return "Ancient Apothic Invaders";
     }
 
     @Override
@@ -50,9 +51,12 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
         HolderLookup.Provider registries = this.lookupProvider.join();
         RegistryLookup<Biome> biomes = registries.lookup(Registries.BIOME).get();
 
-        LootRarity ancient = rarity("ancient");
+        LootRarity rare = rarity("rare");
+        LootRarity epic = rarity("epic");
+        LootRarity mythic = rarity("mythic");
+        LootRarity ancient = ancientRarity("ancient");
 
-        addBoss("the_end/enderman", b -> basicMeleeStats(b)
+        addAncientBoss("the_end/enderman", b -> ancientMeleeStats(b)
                 .entity(EntityType.ENDERMAN)
                 .size(0.75, 3.7)
                 .basicData(c -> meleeGear(c)
@@ -61,7 +65,7 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                         .constraints(Constraints.forDimension(Level.END))
                         .bonusLoot(Apoth.LootTables.BONUS_BOSS_DROPS)));
 
-        addBoss("the_end/shulker", b -> basicRangedStats(b)
+        addAncientBoss("the_end/shulker", b -> ancientRangedStats(b)
                 .entity(EntityType.SHULKER)
                 .size(1.25, 1.25)
                 .basicData(c -> rangedGear(c)
@@ -70,7 +74,7 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                         .constraints(Constraints.forDimension(Level.END))
                         .bonusLoot(Apoth.LootTables.BONUS_BOSS_DROPS)));
 
-        addBoss("the_end/evoker", b -> basicRangedStats(b)
+        addAncientBoss("the_end/evoker", b -> ancientRangedStats(b)
                 .entity(EntityType.EVOKER)
                 .size(0.75, 2.45)
                 .basicData(c -> rangedGear(c)
@@ -81,8 +85,8 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
 
     }
 
-    private Invader.Builder basicMeleeStats(Invader.Builder builder) {
-        LootRarity ancient = rarity("ancient");
+    private Invader.Builder ancientMeleeStats(Invader.Builder builder) {
+        LootRarity ancient = ancientRarity("ancient");
 
         return builder
                 .stats(ancient, c -> c
@@ -98,8 +102,8 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
                         .modifier(Attributes.SCALE, Operation.ADD_MULTIPLIED_TOTAL, -0.15F, 0.25F));
     }
 
-    private Invader.Builder basicRangedStats(Invader.Builder builder) {
-        LootRarity ancient = rarity("ancient");
+    private Invader.Builder ancientRangedStats(Invader.Builder builder) {
+        LootRarity ancient = ancientRarity("ancient");
 
         return builder
                 .stats(ancient, c -> c
@@ -133,11 +137,11 @@ public class ARInvaderProvider extends DynamicRegistryProvider<Invader> {
         return builder;
     }
 
-    private void addBoss(String name, UnaryOperator<Invader.Builder> builder) {
+    private void addAncientBoss(String name, UnaryOperator<Invader.Builder> builder) {
         this.add(AncientReforging.loc(name), builder.apply(Invader.builder()).build());
     }
 
-    private static LootRarity rarity(String path) {
+    private static LootRarity ancientRarity(String path) {
         return Preconditions.checkNotNull(RarityRegistry.INSTANCE.getValue(AncientReforging.loc(path)));
     }
 

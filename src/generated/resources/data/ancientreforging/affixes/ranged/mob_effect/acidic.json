@@ -14,7 +14,7 @@
     "stack_on_reapply": true,
     "target": "arrow_target",
     "types": [
-        "bow"
+        "apotheosis:bow"
     ],
     "values": {
         "ancientreforging:ancient": {

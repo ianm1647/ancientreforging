@@ -16,7 +16,7 @@
     "stack_on_reapply": true,
     "target": "block_self",
     "types": [
-        "shield"
+        "apotheosis:shield"
     ],
     "values": {
         "ancientreforging:ancient": {

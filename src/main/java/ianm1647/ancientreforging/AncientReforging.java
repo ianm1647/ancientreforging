@@ -7,6 +7,7 @@ import com.mojang.logging.LogUtils;
 import dev.shadowsoffire.apotheosis.Apoth;
 import dev.shadowsoffire.placebo.datagen.DataGenBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -31,7 +32,6 @@ public class AncientReforging
         NeoForge.EVENT_BUS.register(this);
         bus.addListener(this::addCreative);
         bus.addListener(this::data);
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

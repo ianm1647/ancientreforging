@@ -5,8 +5,6 @@
     "rarity": "apotheosis:rare",
     "sigil_cost": 2,
     "tables": [
-        "apotheosis:simple_reforging_table",
-        "apotheosis:reforging_table",
         "ancientreforging:ancient_reforging_table"
     ]
 }
