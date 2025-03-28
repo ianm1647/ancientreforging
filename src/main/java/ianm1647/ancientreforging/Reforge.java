@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
 
-public class AncientReforgingRegistry {
+public class Reforge {
 
     private static final DeferredHelper R = DeferredHelper.create(AncientReforging.MODID);
 

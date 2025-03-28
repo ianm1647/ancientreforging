@@ -4,7 +4,5 @@
     "material_cost": 2,
     "rarity": "apotheosis:rare",
     "sigil_cost": 2,
-    "tables": [
-        "ancientreforging:ancient_reforging_table"
-    ]
+    "tables": "ancientreforging:ancient_reforging_table"
 }

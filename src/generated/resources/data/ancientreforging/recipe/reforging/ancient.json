@@ -2,7 +2,7 @@
     "type": "apotheosis:reforging",
     "level_cost": 125,
     "material_cost": 3,
-    "rarity": "ancientreforging:ancient",
+    "rarity": "apotheosis:ancient",
     "sigil_cost": 10,
     "tables": "ancientreforging:ancient_reforging_table"
 }

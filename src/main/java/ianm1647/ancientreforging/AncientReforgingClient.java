@@ -16,13 +16,13 @@ public class AncientReforgingClient {
     @SubscribeEvent
     public static void setup(FMLClientSetupEvent e) {
         e.enqueueWork(() -> {
-            BlockEntityRenderers.register(AncientReforgingRegistry.BlockEntities.ANCIENT_REFORGING_TABLE, k -> new AncientReforgingTableTileRenderer());
+            BlockEntityRenderers.register(Reforge.BlockEntities.ANCIENT_REFORGING_TABLE, k -> new AncientReforgingTableTileRenderer());
         });
     }
 
     @SubscribeEvent
     public static void screens(RegisterMenuScreensEvent e) {
-        e.register(AncientReforgingRegistry.Menus.ANCIENT_REFORGING, AncientReforgingScreen::new);
+        e.register(Reforge.Menus.ANCIENT_REFORGING, AncientReforgingScreen::new);
     }
 
     @SubscribeEvent

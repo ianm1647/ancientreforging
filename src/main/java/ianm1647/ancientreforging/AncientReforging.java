@@ -1,17 +1,17 @@
 package ianm1647.ancientreforging;
 
-import ianm1647.ancientreforging.data.ARAffixProvider;
-import ianm1647.ancientreforging.data.ARInvaderProvider;
-import ianm1647.ancientreforging.data.ARRarityProvider;
+import dev.shadowsoffire.apotheosis.data.RarityProvider;
+import dev.shadowsoffire.placebo.datagen.DataGenBuilder;
+import dev.shadowsoffire.placebo.util.data.DynamicRegistryProvider;
+import ianm1647.ancientreforging.data.*;
 import com.mojang.logging.LogUtils;
 import dev.shadowsoffire.apotheosis.Apoth;
-import dev.shadowsoffire.placebo.datagen.DataGenBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,24 +26,24 @@ public class AncientReforging
 
     public AncientReforging(IEventBus bus)
     {
-        AncientReforgingRegistry.bootstrap(bus);
-        bus.addListener(this::commonSetup);
-
         NeoForge.EVENT_BUS.register(this);
+        Reforge.bootstrap(bus);
         bus.addListener(this::addCreative);
         bus.addListener(this::data);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-    }
-
     public void data(GatherDataEvent e) {
         DataGenBuilder.create(MODID)
+                .provider(DynamicRegistryProvider.runSilently(RarityProvider::new))
+                .provider(ARLootProvider::create)
+                .provider(ARRecipeProvider::new)
                 .provider(ARRarityProvider::new)
                 .provider(ARAffixProvider::new)
                 .provider(ARInvaderProvider::new)
                 .build(e);
+
+        Object2IntOpenHashMap<String> map = (Object2IntOpenHashMap<String>) DataProvider.FIXED_ORDER_FIELDS;
+        map.put("ancientreforging:ancient", 6);
     }
 
     @SubscribeEvent
@@ -54,8 +54,8 @@ public class AncientReforging
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == Apoth.Tabs.ADVENTURE.getKey()) {
-            event.accept(AncientReforgingRegistry.Items.ANCIENT_MATERIAL.value());
-            event.accept(AncientReforgingRegistry.Items.ANCIENT_REFORGING_TABLE.value());
+            event.accept(Reforge.Items.ANCIENT_MATERIAL.value());
+            event.accept(Reforge.Items.ANCIENT_REFORGING_TABLE.value());
         }
     }
 

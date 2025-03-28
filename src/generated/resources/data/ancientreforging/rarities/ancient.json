@@ -2,7 +2,6 @@
     "type": "apotheosis:rarity",
     "color": "rainbow",
     "material": "ancientreforging:ancient_material",
-    "overrides": {},
     "rules": [
         {
             "type": "apotheosis:affix",

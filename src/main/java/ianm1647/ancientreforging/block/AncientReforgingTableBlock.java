@@ -1,6 +1,6 @@
 package ianm1647.ancientreforging.block;
 
-import ianm1647.ancientreforging.AncientReforgingRegistry;
+import ianm1647.ancientreforging.Reforge;
 import ianm1647.ancientreforging.screen.AncientReforgingMenu;
 import dev.shadowsoffire.placebo.block_entity.TickingEntityBlock;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
@@ -56,7 +56,7 @@ public class AncientReforgingTableBlock extends Block implements TickingEntityBl
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(Component.translatable(AncientReforgingRegistry.Blocks.ANCIENT_REFORGING_TABLE.value().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
+        list.add(Component.translatable(Reforge.Blocks.ANCIENT_REFORGING_TABLE.value().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
