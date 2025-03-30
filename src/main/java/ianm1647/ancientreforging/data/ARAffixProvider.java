@@ -562,7 +562,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .build());
 
         this.add(AncientReforging.loc("melee/thunderstruck"),
-                AffixBuilder.simple(ThunderstruckAffix::new)
+                AffixBuilder.categorized(ThunderstruckAffix::new)
                         .definition(AffixType.ABILITY, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                         .step(1)
                         .value(ancient, 7, 11)
