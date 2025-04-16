@@ -9,6 +9,7 @@
     },
     "mob_effect": "apothic_attributes:knowledge",
     "stack_on_reapply": true,
+    "stacking_limit": 3,
     "target": "attack_self",
     "types": [
         "apotheosis:melee_weapon",

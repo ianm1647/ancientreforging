@@ -48,7 +48,7 @@ public class ARRecipeProvider extends LegacyRecipeProvider {
         addReforging("rare", 2, 2, 15, Reforge.Blocks.ANCIENT_REFORGING_TABLE);
         addReforging("epic", 2, 4, 30, Reforge.Blocks.ANCIENT_REFORGING_TABLE);
         addReforging("mythic", 3, 5, 50, Reforge.Blocks.ANCIENT_REFORGING_TABLE);
-        addReforging("ancient", 3, 10, 125, Reforge.Blocks.ANCIENT_REFORGING_TABLE);
+        addAncientReforging("ancient", 3, 10, 125, Reforge.Blocks.ANCIENT_REFORGING_TABLE);
 
         addPurityUpgrade(Purity.PERFECT, 9, List.of(Reforge.Items.ANCIENT_MATERIAL), 1);
     }
@@ -68,6 +68,12 @@ public class ARRecipeProvider extends LegacyRecipeProvider {
     @SafeVarargs
     private void addReforging(String rarity, int mats, int sigils, int levels, Holder<Block>... tables) {
         DynamicHolder<LootRarity> lRarity = RarityRegistry.INSTANCE.holder(Apotheosis.loc(rarity));
+        this.recipeOutput.accept(AncientReforging.loc("reforging/" + rarity), new ReforgingRecipe(lRarity, mats, sigils, levels, HolderSet.direct(tables)), null);
+    }
+
+    @SafeVarargs
+    private void addAncientReforging(String rarity, int mats, int sigils, int levels, Holder<Block>... tables) {
+        DynamicHolder<LootRarity> lRarity = RarityRegistry.INSTANCE.holder(AncientReforging.loc(rarity));
         this.recipeOutput.accept(AncientReforging.loc("reforging/" + rarity), new ReforgingRecipe(lRarity, mats, sigils, levels, HolderSet.direct(tables)), null);
     }
 

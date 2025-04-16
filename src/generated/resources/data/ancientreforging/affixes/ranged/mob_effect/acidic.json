@@ -12,6 +12,7 @@
     },
     "mob_effect": "apothic_attributes:sundering",
     "stack_on_reapply": true,
+    "stacking_limit": 4,
     "target": "arrow_target",
     "types": [
         "apotheosis:bow"

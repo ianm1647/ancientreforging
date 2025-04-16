@@ -2,6 +2,23 @@
     "type": "apotheosis:rarity",
     "color": "rainbow",
     "material": "ancientreforging:ancient_material",
+    "render_data": {
+        "beam_height": 5.0,
+        "beam_radius": 0.05,
+        "beam_texture": "apotheosis:textures/rarity/beam.png",
+        "glow_radius": 0.1,
+        "glow_texture": "apotheosis:textures/rarity/glow.png",
+        "particle": {
+            "enabled": true
+        },
+        "shadow": {
+            "alpha": 255,
+            "frame_time": 1.5,
+            "frames": 7,
+            "size": 0.6,
+            "texture": "apotheosis:textures/rarity/shadow_t4.png"
+        }
+    },
     "rules": [
         {
             "type": "apotheosis:affix",
@@ -63,7 +80,7 @@
             "if_false": {
                 "type": "apotheosis:component",
                 "components": {
-                    "apotheosis:durability_bonus": 0.0,
+                    "!apotheosis:durability_bonus": {},
                     "minecraft:unbreakable": {}
                 }
             },

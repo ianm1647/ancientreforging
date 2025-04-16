@@ -79,11 +79,14 @@ repositories {
 }
 
 dependencies {
-    implementation "dev.shadowsoffire:Apotheosis:${minecraft_version}-${apotheosis_version}"
-    implementation "dev.shadowsoffire:Placebo:${minecraft_version}-${placebo_version}"
-    implementation "dev.shadowsoffire:ApothicAttributes:${minecraft_version}-${attributeslib_version}"
-    implementation "vazkii.patchouli:Patchouli:${patchouli_version}"
-    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    implementation "dev.shadowsoffire:Apotheosis:$minecraft_version-$apotheosis_version"
+    implementation "dev.shadowsoffire:Placebo:$minecraft_version-$placebo_version"
+    implementation "dev.shadowsoffire:ApothicAttributes:$minecraft_version-$attributeslib_version"
+    implementation "dev.shadowsoffire:ApothicSpawners:$minecraft_version-$spawners_version"
+    implementation "dev.shadowsoffire:ApothicEnchanting:$minecraft_version-$enchanting_version"
+    implementation "vazkii.patchouli:Patchouli:$patchouli_version"
+    implementation "top.theillusivec4.curios:curios-neoforge:$curios_version"
+    implementation "snownee.jade:Jade-NeoForge:$minecraft_version-$jade_version"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"

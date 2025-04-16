@@ -1,5 +1,6 @@
 package ianm1647.ancientreforging.data;
 
+import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
 import ianm1647.ancientreforging.AncientReforging;
 import dev.shadowsoffire.apotheosis.affix.*;
@@ -16,8 +17,11 @@ import dev.shadowsoffire.placebo.util.StepFunction;
 import dev.shadowsoffire.placebo.util.data.DynamicRegistryProvider;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -26,6 +30,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import org.spongepowered.include.com.google.common.base.Preconditions;
 
@@ -157,7 +162,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
 
         this.addAttribute("breaker", "destructive", ALObjects.Attributes.MINING_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                .categories(Apoth.LootCategories.BREAKER)
+                .categories(Apoth.LootCategories.BREAKER, Apoth.LootCategories.SHEARS)
                 .value(ancient, 1.15F, 1.6F));
 
         this.addAttribute("breaker", "experienced", ALObjects.Attributes.EXPERIENCE_GAINED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, b -> b
@@ -388,6 +393,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
         this.add(AncientReforging.loc("breaker/effect/radial"),
                 new RadialAffix.Builder()
                         .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, 5)
+                        .categories(Apoth.LootCategories.BREAKER, Apoth.LootCategories.SHEARS)
                         .value(ancient, c -> c
                                 .radii(5, 5)
                                 .radii(7, 5)
@@ -406,6 +412,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .weights(TieredWeights.onlyFor(WorldTier.PINNACLE, 20, 5)))
                 .categories(Apoth.LootCategories.BOW)
                 .stacking()
+                .limit(4)
                 .value(ancient, 160, 320, 0, 30));
 
         this.addMobEffect("ranged", "ensnaring", MobEffects.MOVEMENT_SLOWDOWN, MobEffectAffix.Target.ARROW_TARGET, b -> b
@@ -427,6 +434,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BOW, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(5)
                 .value(ancient, 200, 400, StepFunction.fromBounds(0, 3, 0.5F), 20));
 
         this.addMobEffect("ranged", "blighted", MobEffects.WITHER, MobEffectAffix.Target.ARROW_TARGET, b -> b
@@ -440,6 +448,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .exclusiveWith(afx("ranged/mob_effect/blighted")))
                 .categories(Apoth.LootCategories.BOW, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(4)
                 .value(ancient, 200, 400, 2, 20));
 
         // Melee Basic Effects
@@ -448,18 +457,21 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(3)
                 .value(ancient, 200, 400, StepFunction.fromBounds(0, 2, 0.25F), 40));
 
         this.addMobEffect("melee", "caustic", ALObjects.MobEffects.SUNDERING, MobEffectAffix.Target.ATTACK_TARGET, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(3)
                 .value(ancient, 400, 800, StepFunction.fromBounds(0, 2, 0.5F), 150));
 
         this.addMobEffect("melee", "sophisticated", ALObjects.MobEffects.KNOWLEDGE, MobEffectAffix.Target.ATTACK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(3)
                 .value(ancient, 600, 1500, StepFunction.fromBounds(0, 3, 0.5F), 600));
 
         this.addMobEffect("melee", "omniscient", ALObjects.MobEffects.KNOWLEDGE, MobEffectAffix.Target.ATTACK_SELF, b -> b
@@ -468,6 +480,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .exclusiveWith(afx("melee/mob_effect/sophisticated")))
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(8)
                 .value(ancient, 250, 450, StepFunction.fromBounds(0, 2, 0.25F), 40));
 
         this.addMobEffect("melee", "weakening", MobEffects.WEAKNESS, MobEffectAffix.Target.ATTACK_TARGET, b -> b
@@ -479,6 +492,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
+                .limit(3)
                 .value(ancient, 400, 1200, StepFunction.fromBounds(0, 3, 0.5F), 300));
 
         // Shield basic effects
@@ -487,12 +501,14 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.SHIELD)
                 .stacking()
+                .limit(4)
                 .value(ancient, 200, 400, StepFunction.fromBounds(0, 1, 0.5F), 30));
 
         this.addMobEffect("shield", "venomous", MobEffects.POISON, MobEffectAffix.Target.BLOCK_ATTACKER, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.SHIELD)
                 .stacking()
+                .limit(4)
                 .value(ancient, 300, 500, StepFunction.fromBounds(0, 1, 0.5F), 150));
 
         this.addMobEffect("shield", "withering", MobEffects.WITHER, MobEffectAffix.Target.BLOCK_ATTACKER, b -> b
@@ -511,6 +527,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .exclusiveWith(afx("shield/mob_effect/reinforcing")))
                 .categories(Apoth.LootCategories.SHIELD)
                 .stacking()
+                .limit(3)
                 .value(ancient, 200, 360, StepFunction.fromBounds(0, 1, 0.25F), 40));
 
         // Breaker Abilities
@@ -527,6 +544,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .definition(AffixType.ABILITY, c -> c
                                 .weights(TieredWeights.onlyFor(WorldTier.PINNACLE, 20, 5))
                                 .exclusiveWith(afx("breaker/effect/radial")))
+                        .categories(Apoth.LootCategories.BREAKER)
                         .value(ancient, c -> c
                                 .radii(9, 9))
                         .build());
@@ -564,6 +582,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
         this.add(AncientReforging.loc("melee/thunderstruck"),
                 AffixBuilder.categorized(ThunderstruckAffix::new)
                         .definition(AffixType.ABILITY, DEFAULT_WEIGHT, DEFAULT_QUALITY)
+                        .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                         .step(1)
                         .value(ancient, 7, 11)
                         .build());
@@ -598,6 +617,10 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .build());
 
         this.futures.add(CompletableFuture.runAsync(AffixRegistry.INSTANCE::validateExistingHolders));
+    }
+
+    private HolderSet<Block> blockSet(TagKey<Block> tag) {
+        return BuiltInRegistries.BLOCK.getOrCreateTag(tag);
     }
 
     private void addEnchantment(String type, String name, Holder<Enchantment> enchantment, EnchantmentAffix.Mode mode, UnaryOperator<EnchantmentAffix.Builder> config) {

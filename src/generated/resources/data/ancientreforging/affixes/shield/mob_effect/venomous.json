@@ -9,6 +9,7 @@
     },
     "mob_effect": "minecraft:poison",
     "stack_on_reapply": true,
+    "stacking_limit": 4,
     "target": "block_attacker",
     "types": [
         "apotheosis:shield"

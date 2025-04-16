@@ -1,7 +1,7 @@
-// 1.21.1	2025-03-28T15:55:35.1856134	Recipes
+// 1.21.1	2025-04-16T18:20:16.471439	Recipes
 11d397ba8d56a971208d0c48d52cb1bcd213569e data/ancientreforging/recipe/ancient_reforging_table.json
 a84718485f08811fdda84ce365f6e2142e961dfc data/ancientreforging/recipe/gem_cutting/perfect.json
-07e68ead55d9093b74a30fdb7d4306884c674a1b data/ancientreforging/recipe/reforging/ancient.json
+d3ffdab9e9ade08416bee668c048797e5eb082d6 data/ancientreforging/recipe/reforging/ancient.json
 3fa6de203de101a814af1b89f9ecde0e2945d3b3 data/ancientreforging/recipe/reforging/common.json
 daedc5a74a993adcce275df460a8330400ddfb5d data/ancientreforging/recipe/reforging/epic.json
 e77d2086cf43c5b423da6dfe430cca678f63424c data/ancientreforging/recipe/reforging/mythic.json
