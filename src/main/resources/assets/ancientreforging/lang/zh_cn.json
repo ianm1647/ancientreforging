@@ -1,0 +1,5 @@
+{
+  "block.ancientreforging.ancient_reforging_table": "远古重铸台",
+  "block.ancientreforging.ancient_reforging_table.desc": "使用 宝石粉（碾碎后的任意神化宝石） 和 珍宝材料 来重铸物品词缀。",
+  "block.ancientreforging.ancient_reforging_table.desc2": "最大稀有度: %s"
+}
