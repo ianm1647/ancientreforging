@@ -86,7 +86,7 @@ dependencies {
     implementation "dev.shadowsoffire:ApothicEnchanting:$minecraft_version-$enchanting_version"
     implementation "vazkii.patchouli:Patchouli:$patchouli_version"
     implementation "top.theillusivec4.curios:curios-neoforge:$curios_version"
-    implementation "snownee.jade:Jade-NeoForge:$minecraft_version-$jade_version"
+    implementation "curse.maven:jade-324717:$jade_version"
 
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
