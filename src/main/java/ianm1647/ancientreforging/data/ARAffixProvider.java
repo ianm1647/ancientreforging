@@ -576,7 +576,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 FestiveAffix.builder()
                         .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                         .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                        .value(ancient, StepFunction.fromBounds(0.05F, 0.1F, 0.005F), 20)
+                        .value(ancient, StepFunction.fromBounds(0.05F, 0.12F, 0.005F), 20)
                         .build());
 
         this.add(AncientReforging.loc("melee/thunderstruck"),

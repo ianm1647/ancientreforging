@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-29T10:11:46.8437085	Affixes
+// 1.21.1	2025-08-29T10:41:35.2874008	Affixes
 9c6f46615e5c05e8b01202aa983588abb7f29624 data/ancientreforging/affixes/armor/attribute/adamantine.json
 d763379708905b09479e4d9341e7806df4ad86ad data/ancientreforging/affixes/armor/attribute/aquatic.json
 ca6bd39bd71236cd239e5d381a71ad2e674e2bc0 data/ancientreforging/affixes/armor/attribute/blessed.json
@@ -53,7 +53,7 @@ fcae141902a97057eb495b7eeeef1d4f680d61f6 data/ancientreforging/affixes/melee/att
 94b9781978a4e5c58cefb2a5c69ec48f8cfcffa2 data/ancientreforging/affixes/melee/attribute/violent.json
 b13de8f396a1be4e59f31f07bb13a0d931c10665 data/ancientreforging/affixes/melee/cleaving.json
 618aa7b7754c17c21c3095a801206a942e93db61 data/ancientreforging/affixes/melee/executing.json
-a83b6d0ae3a216c9fa86e985dde2daf8c477ec68 data/ancientreforging/affixes/melee/festive.json
+63a2689a7f2454f589ca95cee95296225670a454 data/ancientreforging/affixes/melee/festive.json
 f1af972d775629e957afee330c5b7e8ed24b49f8 data/ancientreforging/affixes/melee/mob_effect/bloodletting.json
 0ca1534e2b1677ec8203bef6922cc022333a6a49 data/ancientreforging/affixes/melee/mob_effect/caustic.json
 32e37f7ea77da2d3b8e0a04e60d2388a0736e597 data/ancientreforging/affixes/melee/mob_effect/elusive.json
