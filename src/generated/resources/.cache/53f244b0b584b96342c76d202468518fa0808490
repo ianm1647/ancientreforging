@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-29T10:41:35.2874008	Affixes
+// 1.21.1	2025-11-06T23:46:50.3485696	Affixes
 9c6f46615e5c05e8b01202aa983588abb7f29624 data/ancientreforging/affixes/armor/attribute/adamantine.json
 d763379708905b09479e4d9341e7806df4ad86ad data/ancientreforging/affixes/armor/attribute/aquatic.json
 ca6bd39bd71236cd239e5d381a71ad2e674e2bc0 data/ancientreforging/affixes/armor/attribute/blessed.json
@@ -31,7 +31,7 @@ c49618a5e538993dbe94894c99eec21f079e6a5e data/ancientreforging/affixes/armor/mob
 c1f2c9362fabbb29f808b9db9e3b8214f9a6ecfb data/ancientreforging/affixes/breaker/attribute/experienced.json
 d26fa64743f6f6b31e2da2ec7c9bdaf9fb74e82f data/ancientreforging/affixes/breaker/attribute/lengthy.json
 0995edb92a83bc8b9672f366b32fa810921ea9ad data/ancientreforging/affixes/breaker/attribute/submerged.json
-d558feb75bd3052d2b0bdcdc9a8872ba626a0d47 data/ancientreforging/affixes/breaker/effect/omnetic.json
+dff20aa2bc66821428da16d7e1575e9b0777fba8 data/ancientreforging/affixes/breaker/effect/omnetic.json
 d9091e9d10d16af65020f590dfc44c9c84ddedad data/ancientreforging/affixes/breaker/effect/radial.json
 8f487fabdaa59357411864914ce326cf000f35c5 data/ancientreforging/affixes/breaker/enchantment/prosperous.json
 c093caaf4df1285c19558b11095204d710b4b0eb data/ancientreforging/affixes/breaker/mob_effect/spelunkers.json
@@ -52,7 +52,7 @@ fcae141902a97057eb495b7eeeef1d4f680d61f6 data/ancientreforging/affixes/melee/att
 918e25fddbbfb8bb037e6a52c07d1e87cce4d465 data/ancientreforging/affixes/melee/attribute/vampiric.json
 94b9781978a4e5c58cefb2a5c69ec48f8cfcffa2 data/ancientreforging/affixes/melee/attribute/violent.json
 b13de8f396a1be4e59f31f07bb13a0d931c10665 data/ancientreforging/affixes/melee/cleaving.json
-618aa7b7754c17c21c3095a801206a942e93db61 data/ancientreforging/affixes/melee/executing.json
+42b0d8ff6b1fadbc42863a901c776a799b28dfe3 data/ancientreforging/affixes/melee/executing.json
 63a2689a7f2454f589ca95cee95296225670a454 data/ancientreforging/affixes/melee/festive.json
 f1af972d775629e957afee330c5b7e8ed24b49f8 data/ancientreforging/affixes/melee/mob_effect/bloodletting.json
 0ca1534e2b1677ec8203bef6922cc022333a6a49 data/ancientreforging/affixes/melee/mob_effect/caustic.json

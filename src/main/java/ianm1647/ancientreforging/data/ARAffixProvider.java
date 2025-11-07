@@ -1,6 +1,5 @@
 package ianm1647.ancientreforging.data;
 
-import dev.shadowsoffire.apotheosis.Apotheosis;
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
 import ianm1647.ancientreforging.AncientReforging;
 import dev.shadowsoffire.apotheosis.affix.*;
@@ -594,7 +593,8 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .build());
 
         this.add(AncientReforging.loc("melee/executing"),
-                AffixBuilder.simple(ExecutingAffix::new)
+                AffixBuilder.categorized(ExecutingAffix::new)
+                        .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                         .definition(AffixType.ABILITY, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                         .value(ancient, 0.35F, 0.6F)
                         .build());
@@ -616,6 +616,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .value(ancient, 500, 700)
                 .build());
 
+        this.futures.add(CompletableFuture.runAsync(RarityRegistry.INSTANCE::validateExistingHolders));
         this.futures.add(CompletableFuture.runAsync(AffixRegistry.INSTANCE::validateExistingHolders));
     }
 
