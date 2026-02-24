@@ -189,7 +189,7 @@ public class AncientReforgingScreen extends AdventureContainerScreen<AncientRefo
                 PoseStack pose = gfx.pose();
                 pose.pushPose();
                 pose.translate(0.0F, 0.0F, 100.0F);
-                SalvagingScreen.renderGuiItem(gfx, slot.getItem(), slot.x, slot.y, GhostVertexBuilder.makeGhostBuffer(opacity));
+                SalvagingScreen.renderGuiItem(gfx, slot.getItem(), slot.x, slot.y, GhostVertexBuilder.wrapper(opacity));
                 pose.popPose();
             }
         }

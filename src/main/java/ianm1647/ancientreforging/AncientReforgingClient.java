@@ -10,7 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = AncientReforging.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = AncientReforging.MODID, value = Dist.CLIENT)
 public class AncientReforgingClient {
 
     @SubscribeEvent
