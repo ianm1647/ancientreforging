@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-06T23:46:50.3485696	Affixes
+// 1.21.1	2026-03-20T15:33:50.8326023	Affixes
 9c6f46615e5c05e8b01202aa983588abb7f29624 data/ancientreforging/affixes/armor/attribute/adamantine.json
 d763379708905b09479e4d9341e7806df4ad86ad data/ancientreforging/affixes/armor/attribute/aquatic.json
 ca6bd39bd71236cd239e5d381a71ad2e674e2bc0 data/ancientreforging/affixes/armor/attribute/blessed.json
@@ -44,11 +44,11 @@ ea9e8659c092c721091db02e7ba78395fa789df4 data/ancientreforging/affixes/melee/att
 28d43b73e039226fa02624f8544d31072553f2e8 data/ancientreforging/affixes/melee/attribute/glacial.json
 112f76482f89c14e13f12184f58e7d4b81ee4b09 data/ancientreforging/affixes/melee/attribute/graceful.json
 e030cfd95dd0a5e3df9277ef525285cd9cb15202 data/ancientreforging/affixes/melee/attribute/infernal.json
-6911188daff7424352e8d2898f6a290c14a5d86a data/ancientreforging/affixes/melee/attribute/intricate.json
-e22386f5f415e40a62b4897159147b93d4c9544b data/ancientreforging/affixes/melee/attribute/lacerating.json
+75f363a6d3d592846c56bbd35bac80051bd8c083 data/ancientreforging/affixes/melee/attribute/intricate.json
+0ab49dd2bc47fe1124c4fcd354240167efdb1663 data/ancientreforging/affixes/melee/attribute/lacerating.json
 e9b2bb82969cabceda0c087b45e00522a0ed5c4d data/ancientreforging/affixes/melee/attribute/lengthy.json
 db137911422eba767cca290fdacaafa46a3fb0df data/ancientreforging/affixes/melee/attribute/murderous.json
-fcae141902a97057eb495b7eeeef1d4f680d61f6 data/ancientreforging/affixes/melee/attribute/piercing.json
+3557a7821d52e3709373c217e167df80cc9a0494 data/ancientreforging/affixes/melee/attribute/piercing.json
 918e25fddbbfb8bb037e6a52c07d1e87cce4d465 data/ancientreforging/affixes/melee/attribute/vampiric.json
 94b9781978a4e5c58cefb2a5c69ec48f8cfcffa2 data/ancientreforging/affixes/melee/attribute/violent.json
 b13de8f396a1be4e59f31f07bb13a0d931c10665 data/ancientreforging/affixes/melee/cleaving.json
@@ -87,3 +87,4 @@ df7a6fa11592d5d2c6c61ad23867dcffaa40eff2 data/ancientreforging/affixes/shield/mo
 0baaddd718d02a18a39b4fa287872c5a2a4af52d data/ancientreforging/affixes/shield/mob_effect/withering.json
 5facfc156e43fd00c71e66562f4bcb432a8e3420 data/ancientreforging/affixes/shield/psychic.json
 065e00a4dd2d12f5639dca41c63ff3cf2d3f9bdb data/ancientreforging/affixes/shield/retreating.json
+927e3a10032a1d66de558cef4630c8a1b1d25b08 data/ancientreforging/affixes/weapon/attribute/shredding.json
