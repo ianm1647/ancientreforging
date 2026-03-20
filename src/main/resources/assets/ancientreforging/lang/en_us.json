@@ -77,8 +77,8 @@
   "affix.ancientreforging:melee/attribute/piercing": "Piercing",
   "affix.ancientreforging:melee/attribute/piercing.suffix": "of the Sunderer",
 
-  "affix.ancientreforging:melee/attribute/shredding": "Shredding",
-  "affix.ancientreforging:melee/attribute/shredding.suffix": "of Penetration",
+  "affix.ancientreforging:weapon/attribute/shredding": "Shredding",
+  "affix.ancientreforging:weapon/attribute/shredding.suffix": "of the Maelstrom",
 
   "affix.ancientreforging:melee/attribute/giant_slaying": "Giant Slaying",
   "affix.ancientreforging:melee/attribute/giant_slaying.suffix": "of Colossal Strikes",

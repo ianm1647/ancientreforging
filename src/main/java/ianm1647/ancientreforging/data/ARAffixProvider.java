@@ -241,18 +241,23 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
 
         this.addAttribute("melee", "piercing", ALObjects.Attributes.ARMOR_PIERCE, AttributeModifier.Operation.ADD_VALUE, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
                 .step(0.25F)
                 .value(ancient, 10F, 24F));
 
+        this.addAttribute("weapon", "shredding", ALObjects.Attributes.ARMOR_SHRED, AttributeModifier.Operation.ADD_VALUE, b -> b
+                .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
+                .value(ancient, 0.5F, 0.7F));
+
         this.addAttribute("melee", "lacerating", ALObjects.Attributes.CRIT_DAMAGE, AttributeModifier.Operation.ADD_VALUE, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
                 .value(ancient, 0.5F, 0.8F));
 
         this.addAttribute("melee", "intricate", ALObjects.Attributes.CRIT_CHANCE, AttributeModifier.Operation.ADD_VALUE, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
                 .value(ancient, 0.5F, 1.15F));
 
         this.addAttribute("melee", "infernal", ALObjects.Attributes.FIRE_DAMAGE, AttributeModifier.Operation.ADD_VALUE, b -> b
