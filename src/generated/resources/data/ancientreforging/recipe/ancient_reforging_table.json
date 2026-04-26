@@ -1,28 +1,19 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "category": "misc",
-    "group": "ancientreforging",
-    "key": {
-        "A": {
-            "item": "ancientreforging:ancient_material"
-        },
-        "E": {
-            "item": "minecraft:end_stone_bricks"
-        },
-        "M": {
-            "item": "apotheosis:mythic_material"
-        },
-        "R": {
-            "item": "apotheosis:reforging_table"
-        }
-    },
-    "pattern": [
-        " A ",
-        "MRM",
-        "EEE"
-    ],
-    "result": {
-        "count": 1,
-        "id": "ancientreforging:ancient_reforging_table"
-    }
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "ancientreforging",
+  "key": {
+    "A": "ancientreforging:ancient_material",
+    "E": "minecraft:end_stone_bricks",
+    "M": "apotheosis:mythic_material",
+    "R": "apotheosis:reforging_table"
+  },
+  "pattern": [
+    " A ",
+    "MRM",
+    "EEE"
+  ],
+  "result": {
+    "id": "ancientreforging:ancient_reforging_table"
+  }
 }

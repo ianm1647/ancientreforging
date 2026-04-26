@@ -1,19 +1,14 @@
 package ianm1647.ancientreforging.block;
 
-import ianm1647.ancientreforging.Reforge;
 import ianm1647.ancientreforging.screen.AncientReforgingMenu;
 import dev.shadowsoffire.placebo.block_entity.TickingEntityBlock;
 import dev.shadowsoffire.placebo.menu.MenuUtil;
 import dev.shadowsoffire.placebo.menu.SimplerMenuProvider;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,8 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.List;
 
 public class AncientReforgingTableBlock extends Block implements TickingEntityBlock {
     public static final Component TITLE = Component.translatable("container.apotheosis.reforge");
@@ -55,25 +48,7 @@ public class AncientReforgingTableBlock extends Block implements TickingEntityBl
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(Component.translatable(Reforge.Blocks.ANCIENT_REFORGING_TABLE.value().getDescriptionId() + ".desc").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new AncientReforgingTableTile(pPos, pState);
-    }
-
-    @Override
-    @Deprecated
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() == this && newState.getBlock() == this) return;
-        BlockEntity te = world.getBlockEntity(pos);
-        if (te instanceof AncientReforgingTableTile ref) {
-            for (int i = 0; i < ref.inv.getSlots(); i++) {
-                popResource(world, pos, ref.inv.getStackInSlot(i));
-            }
-        }
-        super.onRemove(state, world, pos, newState, isMoving);
     }
 }

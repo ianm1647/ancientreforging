@@ -1,7 +1,13 @@
 package ianm1647.ancientreforging.block;
 
-import ianm1647.ancientreforging.Reforge;
+import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipeCache;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
+import ianm1647.ancientreforging.Reforge;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.ResourceHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jetbrains.annotations.Nullable;
 
 import dev.shadowsoffire.apotheosis.Apoth.Items;
@@ -12,9 +18,7 @@ import dev.shadowsoffire.placebo.block_entity.TickingBlockEntity;
 import dev.shadowsoffire.placebo.cap.InternalItemHandler;
 import dev.shadowsoffire.placebo.reload.DynamicHolder;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -24,24 +28,27 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.IItemHandler;
+
+import java.util.Collection;
 
 public class AncientReforgingTableTile extends BlockEntity implements TickingBlockEntity {
 
     public int time = 0;
     public boolean step1 = true;
 
-    public InternalItemHandler inv = new InternalItemHandler(2){
+    public InternalItemHandler inv = new InternalItemHandler(2) {
         @Override
-        public boolean isItemValid(int slot, ItemStack stack) {
-            if (slot == 0) return AncientReforgingTableTile.this.isValidRarityMat(stack);
-            return stack.is(Items.SIGIL_OF_REBIRTH);
-        };
+        public boolean isValid(int index, ItemResource resource) {
+            if (index == 0) {
+                return AncientReforgingTableTile.this.isValidRarityMat(resource.toStack());
+            }
+            return resource.is(Items.SIGIL_OF_REBIRTH);
+        }
 
         @Override
-        protected void onContentsChanged(int slot) {
+        protected void onContentsChanged(int index, ItemStack previousContents) {
             AncientReforgingTableTile.this.setChanged();
-        };
+        }
     };
 
     public AncientReforgingTableTile(BlockPos pWorldPosition, BlockState pBlockState) {
@@ -56,8 +63,17 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
     @Nullable
     @SuppressWarnings("deprecation")
     public ReforgingRecipe getRecipeFor(LootRarity rarity) {
-        return this.level.getRecipeManager().getAllRecipesFor(RecipeTypes.REFORGING)
-                .stream()
+        if (this.level == null) {
+            return null;
+        }
+        Collection<RecipeHolder<ReforgingRecipe>> recipes;
+        if (this.level.isClientSide()) {
+            recipes = ReforgingRecipeCache.all();
+        }
+        else {
+            recipes = this.level.getServer().getRecipeManager().recipeMap().byType(RecipeTypes.REFORGING);
+        }
+        return recipes.stream()
                 .map(RecipeHolder::value)
                 .filter(r -> r.rarity().get() == rarity && r.tables().contains(this.getBlockState().getBlock().builtInRegistryHolder()))
                 .findFirst()
@@ -72,8 +88,12 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
             this.time++;
         }
         else {
-            if (this.time == 0 && this.step1) return;
-            else this.time++;
+            if (this.time == 0 && this.step1) {
+                return;
+            }
+            else {
+                this.time++;
+            }
         }
 
         if (this.step1 && this.time == 59) {
@@ -81,7 +101,7 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
             this.time = 0;
         }
         else if (this.time == 4 && !this.step1) {
-            RandomSource rand = pLevel.random;
+            RandomSource rand = pLevel.getRandom();
             for (int i = 0; i < 6; i++) {
                 pLevel.addParticle(ParticleTypes.CRIT, pPos.getX() + 0.5 - 0.1 * rand.nextDouble(), pPos.getY() + 13 / 16D, pPos.getZ() + 0.5 + 0.1 * rand.nextDouble(), 0, 0, 0);
             }
@@ -92,19 +112,32 @@ public class AncientReforgingTableTile extends BlockEntity implements TickingBlo
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, Provider regs) {
-        super.saveAdditional(tag, regs);
-        tag.put("inventory", this.inv.serializeNBT(regs));
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        output.putChild("inventory", this.inv);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, Provider regs) {
-        super.loadAdditional(tag, regs);
-        this.inv.deserializeNBT(regs, tag.getCompound("inventory"));
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        input.readChild("inventory", this.inv);
     }
 
-    public IItemHandler getInventory() {
+    public ResourceHandler<ItemResource> getInventory() {
         return this.inv;
     }
 
+    @Override
+    public void preRemoveSideEffects(BlockPos pos, BlockState state) {
+        if (this.level == null) {
+            return;
+        }
+        for (int i = 0; i < this.inv.size(); i++) {
+            ItemResource res = this.inv.getResource(i);
+            int amount = this.inv.getAmountAsInt(i);
+            if (!res.isEmpty() && amount > 0) {
+                Block.popResource(this.level, pos, res.toStack(amount));
+            }
+        }
+    }
 }

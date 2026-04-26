@@ -1,21 +1,21 @@
 {
-    "type": "apotheosis:damage_reduction",
-    "categories": [
-        "apotheosis:chestplate",
-        "apotheosis:leggings"
-    ],
-    "damage_type": "physical",
-    "definition": {
-        "affix_type": "ability",
-        "exclusive_set": [],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "values": {
-        "ancientreforging:ancient": {
-            "min": 0.15,
-            "max": 0.3
-        }
+  "type": "apotheosis:damage_reduction",
+  "categories": [
+    "apotheosis:chestplate",
+    "apotheosis:leggings"
+  ],
+  "damage_type": "physical",
+  "definition": {
+    "affix_type": "ability",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
     }
+  },
+  "values": {
+    "ancientreforging:ancient": {
+      "max": 0.3,
+      "min": 0.15
+    }
+  }
 }

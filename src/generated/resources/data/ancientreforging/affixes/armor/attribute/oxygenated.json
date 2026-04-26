@@ -1,21 +1,21 @@
 {
-    "type": "apotheosis:attribute",
-    "attribute": "minecraft:generic.oxygen_bonus",
-    "categories": [
-        "apotheosis:helmet"
-    ],
-    "definition": {
-        "affix_type": "stat",
-        "exclusive_set": [],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "operation": "add_value",
-    "values": {
-        "ancientreforging:ancient": {
-            "min": 1.65,
-            "max": 2.5
-        }
+  "type": "apotheosis:attribute",
+  "attribute": "minecraft:oxygen_bonus",
+  "categories": [
+    "apotheosis:helmet"
+  ],
+  "definition": {
+    "affix_type": "stat",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
     }
+  },
+  "operation": "add_value",
+  "values": {
+    "ancientreforging:ancient": {
+      "max": 2.5,
+      "min": 1.65
+    }
+  }
 }

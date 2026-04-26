@@ -1,16 +1,16 @@
 {
-    "type": "apotheosis:purity_upgrade",
-    "left": [
-        {
-            "count": 9,
-            "item": "apotheosis:gem_dust"
-        }
-    ],
-    "purity": "perfect",
-    "right": [
-        {
-            "count": 1,
-            "item": "ancientreforging:ancient_material"
-        }
-    ]
+  "type": "apotheosis:purity_upgrade",
+  "left": [
+    {
+      "count": 9,
+      "ingredient": "apotheosis:gem_dust"
+    }
+  ],
+  "purity": "perfect",
+  "right": [
+    {
+      "count": 1,
+      "ingredient": "ancientreforging:ancient_material"
+    }
+  ]
 }

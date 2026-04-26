@@ -1,17 +1,16 @@
 {
-    "type": "apotheosis:salvaging",
-    "input": {
-        "type": "apotheosis:affix",
-        "rarity": "ancientreforging:ancient"
-    },
-    "outputs": [
-        {
-            "max_count": 4,
-            "min_count": 1,
-            "stack": {
-                "count": 1,
-                "id": "ancientreforging:ancient_material"
-            }
-        }
-    ]
+  "type": "apotheosis:salvaging",
+  "input": {
+    "neoforge:ingredient_type": "apotheosis:affix",
+    "rarity": "ancientreforging:ancient"
+  },
+  "outputs": [
+    {
+      "max_count": 4,
+      "min_count": 1,
+      "stack": {
+        "id": "ancientreforging:ancient_material"
+      }
+    }
+  ]
 }

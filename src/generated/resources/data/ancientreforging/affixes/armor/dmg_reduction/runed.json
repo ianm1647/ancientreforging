@@ -1,25 +1,25 @@
 {
-    "type": "apotheosis:damage_reduction",
-    "categories": [
-        "apotheosis:helmet",
-        "apotheosis:chestplate",
-        "apotheosis:leggings",
-        "apotheosis:boots"
+  "type": "apotheosis:damage_reduction",
+  "categories": [
+    "apotheosis:helmet",
+    "apotheosis:chestplate",
+    "apotheosis:leggings",
+    "apotheosis:boots"
+  ],
+  "damage_type": "magic",
+  "definition": {
+    "affix_type": "ability",
+    "exclusive_set": [
+      "ancientreforging:armor/dmg_reduction/blockading"
     ],
-    "damage_type": "magic",
-    "definition": {
-        "affix_type": "ability",
-        "exclusive_set": [
-            "ancientreforging:armor/dmg_reduction/blockading"
-        ],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "values": {
-        "ancientreforging:ancient": {
-            "min": 0.15,
-            "max": 0.3
-        }
+    "weights": {
+      "weight": 25
     }
+  },
+  "values": {
+    "ancientreforging:ancient": {
+      "max": 0.3,
+      "min": 0.15
+    }
+  }
 }

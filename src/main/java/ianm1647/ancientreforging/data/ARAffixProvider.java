@@ -159,7 +159,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
 
         // Breaker Attributes
 
-        this.addAttribute("breaker", "destructive", ALObjects.Attributes.MINING_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, b -> b
+        this.addAttribute("breaker", "destructive", Attributes.BLOCK_BREAK_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BREAKER, Apoth.LootCategories.SHEARS)
                 .value(ancient, 1.15F, 1.6F));
@@ -342,12 +342,12 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .categories(Apoth.LootCategories.HELMET, Apoth.LootCategories.BOOTS)
                 .value(ancient, 0.3F, 0.75F));
 
-        this.addMobEffect("armor", "revitalizing", MobEffects.HEAL, MobEffectAffix.Target.HURT_SELF, b -> b
+        this.addMobEffect("armor", "revitalizing", MobEffects.INSTANT_HEALTH, MobEffectAffix.Target.HURT_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.CHESTPLATE, Apoth.LootCategories.LEGGINGS)
                 .value(ancient, StepFunction.constant(2), StepFunction.fromBounds(0, 2F, 0.5F), 120));
 
-        this.addMobEffect("armor", "nimble", MobEffects.MOVEMENT_SPEED, MobEffectAffix.Target.HURT_SELF, b -> b
+        this.addMobEffect("armor", "nimble", MobEffects.SPEED, MobEffectAffix.Target.HURT_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.LEGGINGS, Apoth.LootCategories.BOOTS)
                 .value(ancient, 400, 800, StepFunction.fromBounds(0, 3, 0.75F), 300));
@@ -359,7 +359,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .categories(Apoth.LootCategories.CHESTPLATE, Apoth.LootCategories.LEGGINGS)
                 .value(ancient, StepFunction.constant(100), StepFunction.fromBounds(0, 2F, 0.5F), 150));
 
-        this.addMobEffect("armor", "bolstering", MobEffects.DAMAGE_RESISTANCE, MobEffectAffix.Target.HURT_SELF, b -> b
+        this.addMobEffect("armor", "bolstering", MobEffects.RESISTANCE, MobEffectAffix.Target.HURT_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.CHESTPLATE, Apoth.LootCategories.LEGGINGS)
                 .value(ancient, 160, 320, StepFunction.fromBounds(0, 2, 0.5F), 120));
@@ -371,12 +371,12 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
 
         // Breaker Basic Effects
 
-        this.addMobEffect("breaker", "swift", MobEffects.DIG_SPEED, MobEffectAffix.Target.BREAK_SELF, b -> b
+        this.addMobEffect("breaker", "swift", MobEffects.HASTE, MobEffectAffix.Target.BREAK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BREAKER)
                 .value(ancient, 480, 800, StepFunction.fromBounds(0, 3, 0.5F), 300));
 
-        this.addMobEffect("breaker", "spelunkers", MobEffects.MOVEMENT_SPEED, MobEffectAffix.Target.BREAK_SELF, b -> b
+        this.addMobEffect("breaker", "spelunkers", MobEffects.SPEED, MobEffectAffix.Target.BREAK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BREAKER)
                 .value(ancient, 680, 1200, StepFunction.fromBounds(0, 3, 0.5F), 300));
@@ -419,12 +419,12 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .limit(4)
                 .value(ancient, 160, 320, 0, 30));
 
-        this.addMobEffect("ranged", "ensnaring", MobEffects.MOVEMENT_SLOWDOWN, MobEffectAffix.Target.ARROW_TARGET, b -> b
+        this.addMobEffect("ranged", "ensnaring", MobEffects.SLOWNESS, MobEffectAffix.Target.ARROW_TARGET, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BOW, Apoth.LootCategories.TRIDENT)
                 .value(ancient, 150, 350, StepFunction.fromBounds(0, 3, 0.25F), 80));
 
-        this.addMobEffect("ranged", "fleeting", MobEffects.MOVEMENT_SPEED, MobEffectAffix.Target.ARROW_SELF, b -> b
+        this.addMobEffect("ranged", "fleeting", MobEffects.SPEED, MobEffectAffix.Target.ARROW_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.BOW, Apoth.LootCategories.TRIDENT)
                 .value(ancient, 200, 500, StepFunction.fromBounds(0, 2, 0.25F), 0));
@@ -492,7 +492,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .value(ancient, 150, 450, StepFunction.fromBounds(0, 3, 0.25F), 150));
 
-        this.addMobEffect("melee", "elusive", MobEffects.MOVEMENT_SPEED, MobEffectAffix.Target.ATTACK_SELF, b -> b
+        this.addMobEffect("melee", "elusive", MobEffects.SPEED, MobEffectAffix.Target.ATTACK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT)
                 .stacking()
@@ -520,12 +520,12 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .categories(Apoth.LootCategories.SHIELD)
                 .value(ancient, 120, 320, StepFunction.fromBounds(0, 3, 0.5F), 0));
 
-        this.addMobEffect("shield", "reinforcing", MobEffects.DAMAGE_RESISTANCE, MobEffectAffix.Target.BLOCK_SELF, b -> b
+        this.addMobEffect("shield", "reinforcing", MobEffects.RESISTANCE, MobEffectAffix.Target.BLOCK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.SHIELD)
                 .value(ancient, 300, 500, StepFunction.fromBounds(0, 1, 0.5F), 100));
 
-        this.addMobEffect("shield", "galvanizing", MobEffects.DAMAGE_RESISTANCE, MobEffectAffix.Target.BLOCK_SELF, b -> b
+        this.addMobEffect("shield", "galvanizing", MobEffects.RESISTANCE, MobEffectAffix.Target.BLOCK_SELF, b -> b
                 .definition(AffixType.BASIC_EFFECT, d -> d
                         .weights(TieredWeights.onlyFor(WorldTier.PINNACLE, 20, 5))
                         .exclusiveWith(afx("shield/mob_effect/reinforcing")))
@@ -626,7 +626,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
     }
 
     private HolderSet<Block> blockSet(TagKey<Block> tag) {
-        return BuiltInRegistries.BLOCK.getOrCreateTag(tag);
+        return BuiltInRegistries.BLOCK.getOrThrow(tag);
     }
 
     private void addEnchantment(String type, String name, Holder<Enchantment> enchantment, EnchantmentAffix.Mode mode, UnaryOperator<EnchantmentAffix.Builder> config) {

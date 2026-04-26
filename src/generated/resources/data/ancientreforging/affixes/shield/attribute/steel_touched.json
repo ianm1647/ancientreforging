@@ -1,21 +1,21 @@
 {
-    "type": "apotheosis:attribute",
-    "attribute": "minecraft:generic.armor_toughness",
-    "categories": [
-        "apotheosis:shield"
-    ],
-    "definition": {
-        "affix_type": "stat",
-        "exclusive_set": [],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "operation": "add_multiplied_base",
-    "values": {
-        "ancientreforging:ancient": {
-            "min": 0.4,
-            "max": 0.6
-        }
+  "type": "apotheosis:attribute",
+  "attribute": "minecraft:armor_toughness",
+  "categories": [
+    "apotheosis:shield"
+  ],
+  "definition": {
+    "affix_type": "stat",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
     }
+  },
+  "operation": "add_multiplied_base",
+  "values": {
+    "ancientreforging:ancient": {
+      "max": 0.6,
+      "min": 0.4
+    }
+  }
 }

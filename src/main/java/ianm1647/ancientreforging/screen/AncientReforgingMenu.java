@@ -2,9 +2,9 @@ package ianm1647.ancientreforging.screen;
 
 import javax.annotation.Nullable;
 
+import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import ianm1647.ancientreforging.Reforge;
 import ianm1647.ancientreforging.block.AncientReforgingTableTile;
-import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
 import org.jetbrains.annotations.NotNull;
 
 import dev.shadowsoffire.apotheosis.Apoth.Items;
@@ -27,8 +27,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
-import net.neoforged.neoforge.items.IItemHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 
 public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableTile> {
 
@@ -57,9 +57,9 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
         });
         this.addSlot(new UpdatingSlot(this.tile.inv, 0, 39, 40, this.tile::isValidRarityMat));
         this.addSlot(new UpdatingSlot(this.tile.inv, 1, 123, 86, stack -> stack.is(Items.SIGIL_OF_REBIRTH)));
-        this.addSlot(new ReforgingResultSlot(this.choicesInv, 0, 27, 135));
-        this.addSlot(new ReforgingResultSlot(this.choicesInv, 1, 81, 135));
-        this.addSlot(new ReforgingResultSlot(this.choicesInv, 2, 135, 135));
+        this.addSlot(new AncientReforgingMenu.ReforgingResultSlot(this.choicesInv, 0, 27, 135));
+        this.addSlot(new AncientReforgingMenu.ReforgingResultSlot(this.choicesInv, 1, 81, 135));
+        this.addSlot(new AncientReforgingMenu.ReforgingResultSlot(this.choicesInv, 2, 135, 135));
         this.addPlayerSlots(inv, 8, 184);
 
         this.mover.registerRule((stack, slot) -> slot >= this.playerInvStart && !LootCategory.forItem(stack).isNone(), 0, 1);
@@ -81,7 +81,7 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
     }
 
     protected void updateSeed() {
-        int seed = this.player.getPersistentData().getInt(REFORGE_SEED);
+        int seed = this.player.getPersistentData().getIntOr(REFORGE_SEED, 0);
         if (seed == 0) {
             seed = this.player.getRandom().nextInt();
             this.player.getPersistentData().putInt(REFORGE_SEED, seed);
@@ -100,7 +100,9 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
     @Nullable
     public LootRarity getRarity() {
         ItemStack s = this.getSlot(1).getItem();
-        if (s.isEmpty()) return null;
+        if (s.isEmpty()) {
+            return null;
+        }
         return RarityRegistry.getMaterialRarity(s.getItem()).getOptional().orElse(null);
     }
 
@@ -135,10 +137,10 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
                 rand.setSeed(this.seed ^ BuiltInRegistries.ITEM.getKey(input.getItem()).hashCode() + slot);
                 GenContext ctx = GenContext.forPlayer(rand, this.player);
                 ItemStack output = LootController.createLootItem(input.copy(), rarity, ctx);
-                this.choicesInv.setStackInSlot(slot, output);
+                this.choicesInv.set(slot, ItemResource.of(output), output.getCount());
             }
             else {
-                this.choicesInv.setStackInSlot(slot, ItemStack.EMPTY);
+                this.choicesInv.set(slot, ItemResource.EMPTY, 0);
             }
         }
 
@@ -146,10 +148,10 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
         this.tile.setChanged();
     }
 
-    public class ReforgingResultSlot extends SlotItemHandler {
+    public class ReforgingResultSlot extends ResourceHandlerSlot {
 
-        public ReforgingResultSlot(IItemHandler itemHandler, int index, int xPosition, int yPosition) {
-            super(itemHandler, index, xPosition, yPosition);
+        public ReforgingResultSlot(InternalItemHandler itemHandler, int index, int xPosition, int yPosition) {
+            super(itemHandler, itemHandler::set, index, xPosition, yPosition);
         }
 
         @Override
@@ -162,7 +164,9 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
             ItemStack input = AncientReforgingMenu.this.getSlot(0).getItem();
             LootRarity rarity = AncientReforgingMenu.this.getRarity();
             ReforgingRecipe recipe = AncientReforgingMenu.this.tile.getRecipeFor(rarity);
-            if (recipe == null || input.isEmpty()) return false;
+            if (recipe == null || input.isEmpty()) {
+                return false;
+            }
 
             int sigils = AncientReforgingMenu.this.getSigilCount();
             int sigilCost = AncientReforgingMenu.this.getSigilCost(this.getSlotIndex());
@@ -171,30 +175,36 @@ public class AncientReforgingMenu extends BlockEntityMenu<AncientReforgingTableT
             int levels = AncientReforgingMenu.this.player.experienceLevel;
             int levelCost = AncientReforgingMenu.this.getLevelCost(this.getSlotIndex());
 
-            if ((sigils < sigilCost || mats < matCost || levels < levelCost) && !AncientReforgingMenu.this.player.isCreative()) return false;
+            if ((sigils < sigilCost || mats < matCost || levels < levelCost) && !AncientReforgingMenu.this.player.isCreative()) {
+                return false;
+            }
 
             return super.mayPickup(playerIn);
         }
 
         @Override
         public void onTake(Player player, ItemStack stack) {
-            if (!player.level().isClientSide) {
+            if (!player.level().isClientSide()) {
                 AncientReforgingMenu.this.getSlot(0).set(ItemStack.EMPTY);
                 if (!player.isCreative()) {
                     int sigilCost = AncientReforgingMenu.this.getSigilCost(this.getSlotIndex());
                     int matCost = AncientReforgingMenu.this.getMatCost(this.getSlotIndex());
                     int levelCost = AncientReforgingMenu.this.getLevelCost(this.getSlotIndex());
-                    AncientReforgingMenu.this.getSlot(1).getItem().shrink(matCost);
-                    AncientReforgingMenu.this.getSlot(2).getItem().shrink(sigilCost);
+                    ItemStack mat = AncientReforgingMenu.this.getSlot(1).getItem();
+                    mat.shrink(matCost);
+                    AncientReforgingMenu.this.getSlot(1).set(mat);
+                    ItemStack sigil = AncientReforgingMenu.this.getSlot(2).getItem();
+                    sigil.shrink(sigilCost);
+                    AncientReforgingMenu.this.getSlot(2).set(sigil);
                     EnchantmentUtils.chargeExperience(player, ApothMiscUtil.getExpCostForSlot(levelCost, this.getSlotIndex()));
                 }
                 player.getPersistentData().putInt(REFORGE_SEED, player.getRandom().nextInt());
                 AncientReforgingMenu.this.updateSeed();
             }
 
-            player.playSound(SoundEvents.EVOKER_CAST_SPELL, 0.99F, player.level().random.nextFloat() * 0.25F + 1F);
-            player.playSound(SoundEvents.AMETHYST_CLUSTER_STEP, 0.34F, player.level().random.nextFloat() * 0.2F + 0.8F);
-            player.playSound(SoundEvents.SMITHING_TABLE_USE, 0.45F, player.level().random.nextFloat() * 0.5F + 0.75F);
+            player.playSound(SoundEvents.EVOKER_CAST_SPELL, 0.99F, player.getRandom().nextFloat() * 0.25F + 1F);
+            player.playSound(SoundEvents.AMETHYST_CLUSTER_STEP, 0.34F, player.getRandom().nextFloat() * 0.2F + 0.8F);
+            player.playSound(SoundEvents.SMITHING_TABLE_USE, 0.45F, player.getRandom().nextFloat() * 0.5F + 0.75F);
         }
     }
 

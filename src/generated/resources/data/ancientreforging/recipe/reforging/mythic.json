@@ -1,8 +1,8 @@
 {
-    "type": "apotheosis:reforging",
-    "level_cost": 50,
-    "material_cost": 3,
-    "rarity": "apotheosis:mythic",
-    "sigil_cost": 5,
-    "tables": "ancientreforging:ancient_reforging_table"
+  "type": "apotheosis:reforging",
+  "level_cost": 50,
+  "material_cost": 3,
+  "rarity": "apotheosis:mythic",
+  "sigil_cost": 5,
+  "tables": "ancientreforging:ancient_reforging_table"
 }

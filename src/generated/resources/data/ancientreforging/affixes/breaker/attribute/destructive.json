@@ -1,22 +1,22 @@
 {
-    "type": "apotheosis:attribute",
-    "attribute": "apothic_attributes:mining_speed",
-    "categories": [
-        "apotheosis:breaker",
-        "apotheosis:shears"
-    ],
-    "definition": {
-        "affix_type": "stat",
-        "exclusive_set": [],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "operation": "add_multiplied_total",
-    "values": {
-        "ancientreforging:ancient": {
-            "min": 1.15,
-            "max": 1.6
-        }
+  "type": "apotheosis:attribute",
+  "attribute": "minecraft:block_break_speed",
+  "categories": [
+    "apotheosis:breaker",
+    "apotheosis:shears"
+  ],
+  "definition": {
+    "affix_type": "stat",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
     }
+  },
+  "operation": "add_multiplied_total",
+  "values": {
+    "ancientreforging:ancient": {
+      "max": 1.6,
+      "min": 1.15
+    }
+  }
 }

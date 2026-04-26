@@ -1,22 +1,22 @@
 {
-    "type": "apotheosis:attribute",
-    "attribute": "minecraft:generic.burning_time",
-    "categories": [
-        "apotheosis:helmet"
-    ],
-    "definition": {
-        "affix_type": "stat",
-        "exclusive_set": [],
-        "weights": {
-            "weight": 25
-        }
-    },
-    "operation": "add_multiplied_base",
-    "values": {
-        "ancientreforging:ancient": {
-            "min": -0.9,
-            "max": -1.5,
-            "step": -0.05
-        }
+  "type": "apotheosis:attribute",
+  "attribute": "minecraft:burning_time",
+  "categories": [
+    "apotheosis:helmet"
+  ],
+  "definition": {
+    "affix_type": "stat",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
     }
+  },
+  "operation": "add_multiplied_base",
+  "values": {
+    "ancientreforging:ancient": {
+      "max": -1.5,
+      "min": -0.9,
+      "step": -0.05
+    }
+  }
 }

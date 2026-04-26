@@ -1,6 +1,7 @@
 {
   "block.ancientreforging.ancient_reforging_table": "Ancient Reforging Table",
   "block.ancientreforging.ancient_reforging_table.desc": "Uses Sigils of Rebirth and Rarity Materials to reforge items",
+  "block.ancientreforging.ancient_reforging_table.desc2": "Max Rarity: %s",
 
   "item.ancientreforging.ancient_material": "Manifestation of Infinity",
   "rarity.ancientreforging:ancient": "Ancient",

@@ -19,8 +19,8 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.util.Unit;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.component.Unbreakable;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.UnaryOperator;
@@ -62,9 +62,10 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                 .rule(new LootRule.SelectLootRule(0.95F, // 99% chance to roll a durability bonus, 1% to be unbreakable.
                         new LootRule.DurabilityLootRule(0.6F, 0.9F),
                         new LootRule.ComponentLootRule(DataComponentPatch.builder()
-                                .set(DataComponents.UNBREAKABLE, new Unbreakable(true))
+                                .set(DataComponents.UNBREAKABLE, Unit.INSTANCE)
                                 .remove(Apoth.Components.DURABILITY_BONUS)
                                 .build())))
+                .invaderSound(Apoth.Sounds.INVADER_MYTHIC)
                 .renderData(c -> c
                         .beamHeight(5f)
                         .beamRadius(0.05f)
@@ -74,15 +75,12 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                                 .frames(7)
                                 .size(0.6F)
                                 .frameTime(1.5F))
-                        .particle(true)));
+                        .particle(true))
+        );
     }
 
     static <T> LootRule componentRule(DataComponentType<T> type, T value) {
         return new LootRule.ComponentLootRule(DataComponentPatch.builder().set(type, value).build());
-    }
-
-    void addRarity(String id, TextColor color, Holder<Item> material, UnaryOperator<LootRarity.Builder> config) {
-        this.add(Apotheosis.loc(id), config.apply(builder(color, material)).build());
     }
 
     void addAncient(String id, TextColor color, Holder<Item> material, UnaryOperator<LootRarity.Builder> config) {

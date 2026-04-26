@@ -1,6 +1,11 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "ancientreforging:items/ancient_material"
+        "layer0": {
+            "sprite": "ancientreforging:items/ancient_material",
+            "neoforge_data": {
+                "light_emission": 15
+            }
+        }
     }
 }
