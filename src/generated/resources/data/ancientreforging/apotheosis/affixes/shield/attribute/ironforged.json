@@ -1,0 +1,21 @@
+{
+  "type": "apotheosis:attribute",
+  "attribute": "minecraft:armor",
+  "categories": [
+    "apotheosis:shield"
+  ],
+  "definition": {
+    "affix_type": "stat",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
+    }
+  },
+  "operation": "add_multiplied_base",
+  "values": {
+    "ancientreforging:ancient": {
+      "min": 0.4,
+      "max": 0.6
+    }
+  }
+}

@@ -45,7 +45,7 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                         .with(WorldTier.FRONTIER, 0, 0)
                         .with(WorldTier.ASCENT, 0, 0)
                         .with(WorldTier.SUMMIT, 0, 0)
-                        .with(WorldTier.PINNACLE, 10, 2))
+                        .with(WorldTier.PINNACLE, 5, 2))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
                 .rule(new LootRule.AffixLootRule(AffixType.STAT))
@@ -56,10 +56,10 @@ public class ARRarityProvider extends DynamicRegistryProvider<LootRarity> {
                 .rule(new LootRule.AffixLootRule(AffixType.BASIC_EFFECT))
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
                 .rule(new LootRule.AffixLootRule(AffixType.ABILITY))
-                .rule(new LootRule.SelectLootRule(0.85F, // 95% chance for 3-4 sockets, 5% chance for guaranteed 5 sockets.
+                .rule(new LootRule.SelectLootRule(0.85F, // 85% chance for 3-4 sockets, 15% chance for guaranteed 5 sockets.
                         new LootRule.SocketLootRule(3, 4),
                         new LootRule.SocketLootRule(5, 5)))
-                .rule(new LootRule.SelectLootRule(0.95F, // 99% chance to roll a durability bonus, 1% to be unbreakable.
+                .rule(new LootRule.SelectLootRule(0.95F, // 95% chance to roll a durability bonus, 5% to be unbreakable.
                         new LootRule.DurabilityLootRule(0.6F, 0.9F),
                         new LootRule.ComponentLootRule(DataComponentPatch.builder()
                                 .set(DataComponents.UNBREAKABLE, Unit.INSTANCE)

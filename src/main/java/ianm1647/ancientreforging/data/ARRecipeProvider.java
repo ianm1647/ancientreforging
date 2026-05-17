@@ -12,7 +12,8 @@ import dev.shadowsoffire.apotheosis.socket.gem.cutting.PurityUpgradeRecipe;
 import dev.shadowsoffire.apotheosis.util.AffixItemIngredient;
 import dev.shadowsoffire.apotheosis.util.GemIngredient;
 import dev.shadowsoffire.placebo.datagen.LegacyRecipeProvider;
-import dev.shadowsoffire.placebo.reload.DynamicHolder;
+import dev.shadowsoffire.placebo.dynreg.DynamicHolder;
+import dev.shadowsoffire.placebo.dynreg.tag.DynamicHolderSet;
 import ianm1647.ancientreforging.AncientReforging;
 import ianm1647.ancientreforging.Reforge;
 import net.minecraft.core.Holder;
@@ -29,6 +30,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import org.spongepowered.asm.mixin.Dynamic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +92,7 @@ public class ARRecipeProvider extends LegacyRecipeProvider {
     }
 
     private void addGemSalvaging(Purity purity, int min, int max) {
-        Ingredient input = new Ingredient(new GemIngredient(purity));
+        Ingredient input = new Ingredient(new GemIngredient(DynamicHolderSet.empty(), purity));
         SalvagingRecipe.OutputData output = new SalvagingRecipe.OutputData(Apoth.Items.GEM_DUST.value(), min, max);
         this.addSalvaging("gem/" + purity.getSerializedName(), input, output);
     }

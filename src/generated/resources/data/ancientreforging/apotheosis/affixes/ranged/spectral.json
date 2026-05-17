@@ -1,0 +1,16 @@
+{
+  "type": "apotheosis:spectral",
+  "definition": {
+    "affix_type": "ability",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
+    }
+  },
+  "values": {
+    "ancientreforging:ancient": {
+      "min": 0.5,
+      "max": 0.9
+    }
+  }
+}

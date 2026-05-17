@@ -40,13 +40,14 @@ public class AncientReforgingTableBlockItem extends ReforgingTableBlockItem {
             return;
         }
 
-        LootRarity globalMax = RarityRegistry.getSortedRarities().stream()
-                .max(Comparator.comparingInt(LootRarity::sortIndex))
-                .orElse(null);
+        tooltip.accept(Component.translatable("block.ancientreforging.ancient_reforging_table.desc2", max.toComponent()).withStyle(ChatFormatting.GRAY));
 
-        if (globalMax != null && max.sortIndex() < globalMax.sortIndex()) {
-            tooltip.accept(Component.translatable("block.ancientreforging.ancient_reforging_table.desc2", max.toComponent()).withStyle(ChatFormatting.GRAY));
-        }
+//        LootRarity globalMax = RarityRegistry.getSortedRarities().stream()
+//                .max(Comparator.comparingInt(LootRarity::sortIndex))
+//                .orElse(null);
+//
+//        if (globalMax != null && max.sortIndex() < globalMax.sortIndex()) {
+//        }
     }
 
     @SuppressWarnings("deprecation")

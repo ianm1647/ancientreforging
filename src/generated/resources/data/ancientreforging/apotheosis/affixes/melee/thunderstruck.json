@@ -1,0 +1,21 @@
+{
+  "type": "apotheosis:thunderstruck",
+  "categories": [
+    "apotheosis:melee_weapon",
+    "apotheosis:trident"
+  ],
+  "definition": {
+    "affix_type": "ability",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
+    }
+  },
+  "values": {
+    "ancientreforging:ancient": {
+      "min": 7.0,
+      "max": 11.0,
+      "step": 1.0
+    }
+  }
+}

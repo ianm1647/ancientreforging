@@ -1,6 +1,7 @@
 package ianm1647.ancientreforging.data;
 
 import dev.shadowsoffire.apotheosis.loot.LootCategory;
+import dev.shadowsoffire.placebo.dynreg.DynamicHolder;
 import ianm1647.ancientreforging.AncientReforging;
 import dev.shadowsoffire.apotheosis.affix.*;
 import dev.shadowsoffire.apotheosis.affix.effect.*;
@@ -11,7 +12,6 @@ import dev.shadowsoffire.apotheosis.tiers.TieredWeights;
 import dev.shadowsoffire.apotheosis.tiers.WorldTier;
 import dev.shadowsoffire.apotheosis.util.ApothMiscUtil;
 import dev.shadowsoffire.apothic_attributes.api.ALObjects;
-import dev.shadowsoffire.placebo.reload.DynamicHolder;
 import dev.shadowsoffire.placebo.util.StepFunction;
 import dev.shadowsoffire.placebo.util.data.DynamicRegistryProvider;
 import net.minecraft.core.Holder;

@@ -1,0 +1,26 @@
+{
+  "type": "apotheosis:mob_effect",
+  "definition": {
+    "affix_type": "basic_effect",
+    "exclusive_set": [],
+    "weights": {
+      "weight": 25
+    }
+  },
+  "mob_effect": "minecraft:blindness",
+  "target": "hurt_attacker",
+  "types": [
+    "apotheosis:helmet"
+  ],
+  "values": {
+    "ancientreforging:ancient": {
+      "duration": {
+        "min": 120.0,
+        "max": 300.0,
+        "step": 20.0
+      },
+      "amplifier": 0.0,
+      "cooldown": 100
+    }
+  }
+}

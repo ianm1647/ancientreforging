@@ -2,6 +2,7 @@ package ianm1647.ancientreforging.block;
 
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipeCache;
 import dev.shadowsoffire.apotheosis.affix.reforging.ReforgingRecipe;
+import dev.shadowsoffire.placebo.dynreg.DynamicHolder;
 import ianm1647.ancientreforging.Reforge;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.ValueInput;
@@ -16,7 +17,6 @@ import dev.shadowsoffire.apotheosis.loot.LootRarity;
 import dev.shadowsoffire.apotheosis.loot.RarityRegistry;
 import dev.shadowsoffire.placebo.block_entity.TickingBlockEntity;
 import dev.shadowsoffire.placebo.cap.InternalItemHandler;
-import dev.shadowsoffire.placebo.reload.DynamicHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;

@@ -2,7 +2,7 @@ package ianm1647.ancientreforging.item;
 
 import dev.shadowsoffire.apotheosis.affix.salvaging.SalvageItem;
 import dev.shadowsoffire.apotheosis.loot.LootRarity;
-import dev.shadowsoffire.placebo.reload.DynamicHolder;
+import dev.shadowsoffire.placebo.dynreg.DynamicHolder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.ItemStack;
