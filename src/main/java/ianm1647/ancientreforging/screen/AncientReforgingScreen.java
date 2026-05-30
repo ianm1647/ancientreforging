@@ -104,7 +104,7 @@ public class AncientReforgingScreen extends AdventureContainerScreen<AncientRefo
 
         if (!hadItem && this.hasMainItem) {
             this.animationTick = MAX_ANIMATION_TIME;
-            this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(Apoth.Sounds.REFORGE, 1F, 2F));
+            this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(Apoth.Sounds.REFORGE_ITEM_REFORGED, 1F, 2F));
         }
 
         if (this.hasMainItem) {

@@ -5,12 +5,12 @@
   "key": {
     "A": "ancientreforging:ancient_material",
     "E": "minecraft:end_stone_bricks",
-    "M": "apotheosis:mythic_material",
+    "G": "apotheosis:godforged_pearl",
     "R": "apotheosis:reforging_table"
   },
   "pattern": [
     " A ",
-    "MRM",
+    "GRG",
     "EEE"
   ],
   "result": {
