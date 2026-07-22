@@ -39,7 +39,7 @@ public class ARRecipeProvider extends LegacyRecipeProvider {
 
     @Override
     protected void genRecipes(RecipeOutput recipeOutput, HolderLookup.Provider registries) {
-        addShaped(Reforge.Blocks.ANCIENT_REFORGING_TABLE, 3, 3, null, Reforge.Items.ANCIENT_MATERIAL, null, Apoth.Items.MYTHIC_MATERIAL, Apoth.Items.REFORGING_TABLE, Apoth.Items.MYTHIC_MATERIAL, Items.END_STONE_BRICKS, Items.END_STONE_BRICKS, Items.END_STONE_BRICKS);
+        addShaped(Reforge.Blocks.ANCIENT_REFORGING_TABLE, 3, 3, null, Reforge.Items.ANCIENT_MATERIAL, null, Apoth.Items.GODFORGED_PEARL, Apoth.Items.REFORGING_TABLE, Apoth.Items.GODFORGED_PEARL, Items.END_STONE_BRICKS, Items.END_STONE_BRICKS, Items.END_STONE_BRICKS);
 
         addAffixSalvaging("ancient", Reforge.Items.ANCIENT_MATERIAL);
 

@@ -9,8 +9,8 @@
         "E": {
             "item": "minecraft:end_stone_bricks"
         },
-        "M": {
-            "item": "apotheosis:mythic_material"
+        "G": {
+            "item": "apotheosis:godforged_pearl"
         },
         "R": {
             "item": "apotheosis:reforging_table"
@@ -18,7 +18,7 @@
     },
     "pattern": [
         " A ",
-        "MRM",
+        "GRG",
         "EEE"
     ],
     "result": {
