@@ -1,0 +1,329 @@
+{
+  "block.ancientreforging.ancient_reforging_table": "远古重筑台",
+  "block.ancientreforging.ancient_reforging_table.desc": "使用新生符石和珍宝材料以重铸装备",
+  
+  "item.ancientreforging.ancient_material": "无穷相变",
+  "rarity.ancientreforging:ancient": "远古",
+  
+  "affix.ancientreforging:armor/attribute/blessed": "祝福",
+  "affix.ancientreforging:armor/attribute/blessed.suffix": "生命",
+  
+  "affix.ancientreforging:armor/attribute/windswept": "风蚀",
+  "affix.ancientreforging:armor/attribute/windswept.suffix": "潮流",
+  
+  "affix.ancientreforging:armor/attribute/ironforged": "铁铸",
+  "affix.ancientreforging:armor/attribute/ironforged.suffix": "坚铁",
+  
+  "affix.ancientreforging:melee/attribute/violent": "暴虐",
+  "affix.ancientreforging:melee/attribute/violent.suffix": "杀戮",
+  
+  "affix.ancientreforging:ranged/attribute/windswept": "风蚀",
+  "affix.ancientreforging:ranged/attribute/windswept.suffix": "潮流",
+  
+  "affix.ancientreforging:melee/attribute/graceful": "轻盈",
+  "affix.ancientreforging:melee/attribute/graceful.suffix": "决斗者",
+  
+  "affix.ancientreforging:melee/attribute/forceful": "强力",
+  "affix.ancientreforging:melee/attribute/forceful.suffix": "公牛",
+  
+  "affix.ancientreforging:armor/attribute/aquatic": "水生",
+  "affix.ancientreforging:armor/attribute/aquatic.suffix": "大洋",
+  
+  "affix.ancientreforging:armor/attribute/gravitational": "唤星",
+  "affix.ancientreforging:armor/attribute/gravitational.suffix": "引力",
+  
+  "affix.ancientreforging:breaker/attribute/lengthy": "长存",
+  "affix.ancientreforging:breaker/attribute/lengthy.suffix": "紧握",
+  
+  "affix.ancientreforging:breaker/attribute/experienced": "老练",
+  "affix.ancientreforging:breaker/attribute/experienced.suffix": "学者",
+  
+  "affix.ancientreforging:melee/attribute/elongated": "延长",
+  "affix.ancientreforging:melee/attribute/elongated.suffix": "远古历战",
+  
+  "affix.ancientreforging:ranged/attribute/agile": "敏捷",
+  "affix.ancientreforging:ranged/attribute/agile.suffix": "灵巧",
+  
+  "affix.ancientreforging:armor/attribute/steel_touched": "钢触",
+  "affix.ancientreforging:armor/attribute/steel_touched.suffix": "卫士",
+  
+  "affix.ancientreforging:armor/attribute/stalwart": "刚毅",
+  "affix.ancientreforging:armor/attribute/stalwart.suffix": "坚执",
+  
+  "affix.ancientreforging:armor/attribute/elastic": "弹性",
+  "affix.ancientreforging:armor/attribute/elastic.suffix": "攀登",
+  
+  "affix.ancientreforging:armor/attribute/fortunate": "幸运",
+  "affix.ancientreforging:armor/attribute/fortunate.suffix": "四叶草",
+  
+  "affix.ancientreforging:armor/attribute/winged": "有翼",
+  "affix.ancientreforging:armor/attribute/winged.suffix": "天空",
+
+  "affix.ancientreforging:melee/attribute/intricate": "复杂",
+  "affix.ancientreforging:melee/attribute/intricate.suffix": "批判性思维",
+
+  "affix.ancientreforging:melee/attribute/lacerating": "撕裂",
+  "affix.ancientreforging:melee/attribute/lacerating.suffix": "精准打击",
+
+  "affix.ancientreforging:melee/attribute/glacial": "冰川",
+  "affix.ancientreforging:melee/attribute/glacial.suffix": "冻土",
+
+  "affix.ancientreforging:melee/attribute/infernal": "炼狱",
+  "affix.ancientreforging:melee/attribute/infernal.suffix": "烈阳",
+
+  "affix.ancientreforging:melee/attribute/vampiric": "吸血",
+  "affix.ancientreforging:melee/attribute/vampiric.suffix": "放血",
+
+  "affix.ancientreforging:melee/attribute/piercing": "穿刺",
+  "affix.ancientreforging:melee/attribute/piercing.suffix": "撕裂者",
+
+  "affix.ancientreforging:melee/attribute/shredding": "粉碎",
+  "affix.ancientreforging:melee/attribute/shredding.suffix": "漩涡",
+
+  "affix.ancientreforging:melee/attribute/giant_slaying": "狂戮",
+  "affix.ancientreforging:melee/attribute/giant_slaying.suffix": "巨力",
+
+  "affix.ancientreforging:melee/attribute/berserking": "狂暴",
+  "affix.ancientreforging:melee/attribute/berserking.suffix": "狂战士",
+
+  "affix.ancientreforging:breaker/attribute/destructive": "破坏性",
+  "affix.ancientreforging:breaker/attribute/destructive.suffix": "裂岩者",
+
+  "affix.ancientreforging:ranged/attribute/elven": "精灵",
+  "affix.ancientreforging:ranged/attribute/elven.suffix": "始祖弓",
+
+  "affix.ancientreforging:ranged/attribute/streamlined": "流线型",
+  "affix.ancientreforging:ranged/attribute/streamlined.suffix": "狙击",
+
+  "affix.ancientreforging:melee/mob_effect/elusive": "变幻",
+  "affix.ancientreforging:melee/mob_effect/elusive.suffix": "闪避",
+
+  "affix.ancientreforging:breaker/mob_effect/swift": "迅捷",
+  "affix.ancientreforging:breaker/mob_effect/swift.suffix": "粉碎者",
+
+  "affix.ancientreforging:breaker/mob_effect/spelunkers": "探穴者",
+  "affix.ancientreforging:breaker/mob_effect/spelunkers.suffix": "洞穴探险者",
+
+  "affix.ancientreforging:ranged/mob_effect/ensnaring": "诱捕",
+  "affix.ancientreforging:ranged/mob_effect/ensnaring.suffix": "捕食者",
+
+  "affix.ancientreforging:shield/mob_effect/venomous": "淬毒",
+  "affix.ancientreforging:shield/mob_effect/venomous.suffix": "毒蛇",
+
+  "affix.ancientreforging:ranged/mob_effect/fleeting": "疾驰",
+  "affix.ancientreforging:ranged/mob_effect/fleeting.suffix": "游侠",
+
+  "affix.ancientreforging:melee/mob_effect/weakening": "弱化",
+  "affix.ancientreforging:melee/mob_effect/weakening.suffix": "虚弱",
+
+  "affix.ancientreforging:armor/mob_effect/bolstering": "鼓舞",
+  "affix.ancientreforging:armor/mob_effect/bolstering.suffix": "坚忍",
+
+  "affix.ancientreforging:armor/mob_effect/revitalizing": "活力迸发",
+  "affix.ancientreforging:armor/mob_effect/revitalizing.suffix": "源泉",
+
+  "affix.ancientreforging:armor/mob_effect/nimble": "轻便",
+  "affix.ancientreforging:armor/mob_effect/nimble.suffix": "狐之敏捷",
+
+  "affix.ancientreforging:armor/mob_effect/blinding": "失明",
+  "affix.ancientreforging:armor/mob_effect/blinding.suffix": "黑暗",
+
+  "affix.ancientreforging:ranged/mob_effect/shulkers": "潜影",
+  "affix.ancientreforging:ranged/mob_effect/shulkers.suffix": "漂浮",
+
+  "affix.ancientreforging:shield/mob_effect/withering": "凋零",
+  "affix.ancientreforging:shield/mob_effect/withering.suffix": "凋零之骨",
+
+  "affix.ancientreforging:shield/attribute/ironforged": "铁铸",
+  "affix.ancientreforging:shield/attribute/ironforged.suffix": "坚铁",
+
+  "affix.ancientreforging:shield/attribute/steel_touched": "钢触",
+  "affix.ancientreforging:shield/attribute/steel_touched.suffix": "卫士",
+
+  "affix.ancientreforging:ranged/mob_effect/ivy_laced": "青藤缠绕",
+  "affix.ancientreforging:ranged/mob_effect/ivy_laced.suffix": "带毒",
+
+  "affix.ancientreforging:ranged/mob_effect/satanic": "恶魔",
+  "affix.ancientreforging:ranged/mob_effect/satanic.suffix": "狱火",
+
+  "affix.ancientreforging:ranged/spectral": "幽灵",
+  "affix.ancientreforging:ranged/spectral.suffix": "悲叹者",
+  "affix.ancientreforging:ranged/spectral.desc": "你有%s%%的概率射出第二发箭矢。",
+
+  "affix.ancientreforging:ranged/magical": "魔法",
+  "affix.ancientreforging:ranged/magical.suffix": "秘法",
+  "affix.ancientreforging:ranged/magical.desc": "你射出的箭矢造成魔法伤害。",
+
+  "affix.ancientreforging:melee/festive": "庆典",
+  "affix.ancientreforging:melee/festive.suffix": "狂欢",
+  "affix.ancientreforging:melee/festive.desc": "击杀敌人后有%s%%的概率触发战利品大爆发。",
+
+  "affix.ancientreforging:melee/thunderstruck": "雷击",
+  "affix.ancientreforging:melee/thunderstruck.suffix": "风暴",
+  "affix.ancientreforging:melee/thunderstruck.desc": "攻击目标时对周围敌人造成%s点伤害。",
+
+  "affix.ancientreforging:shield/retreating": "退缩",
+  "affix.ancientreforging:shield/retreating.suffix": "丑角",
+  "affix.ancientreforging:shield/retreating.desc": "受到近战攻击时你会被击退。",
+
+  "affix.ancientreforging:generic/telepathic": "心灵感应",
+  "affix.ancientreforging:generic/telepathic.suffix": "时空",
+  "affix.ancientreforging:generic/telepathic.desc.weapon": "战利品将传送到你身边。",
+  "affix.ancientreforging:generic/telepathic.desc.tool": "掉落物将传送到你身边。",
+
+  "affix.ancientreforging:melee/executing": "处决",
+  "affix.ancientreforging:melee/executing.suffix": "处决者",
+  "affix.ancientreforging:melee/executing.desc": "血量低于%s%%的敌人会被斩杀。",
+
+  "affix.ancientreforging:melee/cleaving": "劈砍",
+  "affix.ancientreforging:melee/cleaving.suffix": "刽子手",
+  "affix.ancientreforging:melee/cleaving.desc": "攻击时有%s%%的概率同时命中周围的最多%s名敌人。",
+
+  "affix.ancientreforging:breaker/ability/enlightened": "启明",
+  "affix.ancientreforging:breaker/ability/enlightened.suffix": "光明使者",
+  "affix.ancientreforging:breaker/ability/enlightened.desc": "此工具可以消耗%s的耐久度放置火把。",
+
+  "affix.ancientreforging:shield/psychic": "通灵",
+  "affix.ancientreforging:shield/psychic.suffix": "凶狠",
+  "affix.ancientreforging:shield/psychic.desc": "抵挡弹射物时将%s%%的伤害返还给攻击者。",
+
+  "affix.ancientreforging:shield/catalyzing": "催化",
+  "affix.ancientreforging:shield/catalyzing.suffix": "转换",
+  "affix.ancientreforging:shield/catalyzing.desc": "抵挡爆炸时赋予你强大的力量。",
+
+  "affix.ancientreforging:melee/attribute/annihilating": "歼灭",
+  "affix.ancientreforging:melee/attribute/annihilating.suffix": "泰坦",
+
+  "affix.ancientreforging:melee/attribute/decimating": "屠杀",
+  "affix.ancientreforging:melee/attribute/decimating.suffix": "神王",
+
+  "affix.ancientreforging:melee/attribute/murderous": "嗜血",
+  "affix.ancientreforging:melee/attribute/murderous.suffix": "米诺陶",
+
+  "affix.ancientreforging:ranged/mob_effect/acidic": "酸蚀",
+  "affix.ancientreforging:ranged/mob_effect/acidic.suffix": "腐蚀",
+
+  "affix.ancientreforging:melee/mob_effect/bloodletting": "腐蚀性",
+  "affix.ancientreforging:melee/mob_effect/bloodletting.suffix": "残杀者",
+
+  "affix.ancientreforging:melee/mob_effect/caustic": "腐蚀性",
+  "affix.ancientreforging:melee/mob_effect/caustic.suffix": "范围腐蚀",
+
+  "affix.ancientreforging:melee/mob_effect/sophisticated": "精妙",
+  "affix.ancientreforging:melee/mob_effect/sophisticated.suffix": "古代图书馆",
+
+  "affix.ancientreforging:shield/mob_effect/devilish": "魔化",
+  "affix.ancientreforging:shield/mob_effect/devilish.suffix": "老兵",
+
+  "affix.ancientreforging:breaker/effect/radial": "放射状",
+  "affix.ancientreforging:breaker/effect/radial.suffix": "大地崩解者",
+  "affix.ancientreforging:breaker/effect/radial.desc": "此工具能造成%sx%s范围的破坏。",
+
+  "affix.ancientreforging:breaker/ability/supermassive": "超质量",
+  "affix.ancientreforging:breaker/ability/supermassive.suffix": "世界粉碎者",
+  "affix.ancientreforging:breaker/ability/supermassive.desc": "此工具能造成%sx%s范围的破坏。",
+
+  "affix.ancientreforging:melee_weapon/mob_effect/detonating": "引火",
+  "affix.ancientreforging:melee_weapon/mob_effect/detonating.suffix": "元素之焰",
+
+  "affix.ancientreforging:armor/attribute/oxygenated": "氧化",
+  "affix.ancientreforging:armor/attribute/oxygenated.suffix": "潜水员",
+
+  "affix.ancientreforging:melee/mob_effect/omniscient": "全知",
+  "affix.ancientreforging:melee/mob_effect/omniscient.suffix": "大贤者",
+
+  "affix.ancientreforging:breaker/attribute/submerged": "沉沦",
+  "affix.ancientreforging:breaker/attribute/submerged.suffix": "海洋矿工",
+
+  "affix.ancientreforging:shield/mob_effect/galvanizing": "电镀",
+  "affix.ancientreforging:shield/mob_effect/galvanizing.suffix": "不可破坏",
+
+  "affix.ancientreforging:armor/dmg_reduction/grounded": "接地",
+  "affix.ancientreforging:armor/dmg_reduction/grounded.suffix": "避雷针",
+
+  "affix.ancientreforging:ranged/mob_effect/deathbound": "死亡捆束",
+  "affix.ancientreforging:ranged/mob_effect/deathbound.suffix": "凋零之主",
+
+  "affix.ancientreforging:shield/mob_effect/reinforcing": "强化",
+  "affix.ancientreforging:shield/mob_effect/reinforcing.suffix": "钢制",
+
+  "affix.ancientreforging:melee/attribute/lengthy": "长存",
+  "affix.ancientreforging:melee/attribute/lengthy.suffix": "悠久",
+
+  "affix.ancientreforging:ranged/mob_effect/blighted": "枯萎",
+  "affix.ancientreforging:ranged/mob_effect/blighted.suffix": "枯萎之地",
+
+  "affix.ancientreforging:armor/attribute/unbound": "不羁",
+  "affix.ancientreforging:armor/attribute/unbound.suffix": "伊卡洛斯",
+
+  "affix.ancientreforging:armor/attribute/fireproof": "防火",
+  "affix.ancientreforging:armor/attribute/fireproof.suffix": "御火",
+
+  "affix.ancientreforging:armor/attribute/adamantine": "金刚",
+  "affix.ancientreforging:armor/attribute/adamantine.suffix": "金刚",
+
+  "affix.ancientreforging:breaker/enchantment/prosperous": "繁荣",
+  "affix.ancientreforging:breaker/enchantment/prosperous.suffix": "鸿运",
+
+  "affix.ancientreforging:ranged/enchantment/prosperous": "繁荣",
+  "affix.ancientreforging:ranged/enchantment/prosperous.suffix": "寻宝者",
+
+  "affix.ancientreforging:armor/dmg_reduction/deflective": "偏转",
+  "affix.ancientreforging:armor/dmg_reduction/deflective.suffix": "偏转",
+
+  "misc.ancientreforging.iron": "铁",
+  "misc.ancientreforging.diamond": "钻石",
+  "misc.ancientreforging.netherite": "下界合金",
+
+  "affix.ancientreforging:breaker/effect/omnetic": "奥姆尼提克",
+  "affix.ancientreforging:breaker/effect/omnetic.suffix": "单一性",
+  "affix.ancientreforging:breaker/effect/omnetic.desc": "此工具对所有方块均具有%s挖掘能效。",
+
+  "misc.ancientreforging.physical": "物理",
+  "misc.ancientreforging.magic": "魔法",
+  "misc.ancientreforging.fire": "火焰",
+  "misc.ancientreforging.fall": "摔落",
+  "misc.ancientreforging.explosion": "爆炸",
+  "misc.ancientreforging.projectile": "弹射物",
+  "misc.ancientreforging.lightning": "闪电",
+  "affix.ancientreforging:damage_reduction.desc": "受到的%s伤害降低%s%%",
+
+  "affix.ancientreforging:armor/dmg_reduction/blockading": "封锁",
+  "affix.ancientreforging:armor/dmg_reduction/blockading.suffix": "封锁",
+
+  "affix.ancientreforging:armor/dmg_reduction/runed": "符文",
+  "affix.ancientreforging:armor/dmg_reduction/runed.suffix": "咒法监守",
+
+  "affix.ancientreforging:armor/dmg_reduction/blast_forged": "爆诞锻造",
+  "affix.ancientreforging:armor/dmg_reduction/blast_forged.suffix": "锻造神",
+
+  "affix.ancientreforging:armor/dmg_reduction/dwarven": "矮人",
+  "affix.ancientreforging:armor/dmg_reduction/dwarven.suffix": "火山",
+
+  "affix.ancientreforging:armor/dmg_reduction/feathery": "轻羽",
+  "affix.ancientreforging:armor/dmg_reduction/feathery.suffix": "飞鹰",
+
+  "affix.ancientreforging:shield/attribute/stalwart": "刚毅",
+  "affix.ancientreforging:shield/attribute/stalwart.suffix": "坚执",
+
+  "affix.ancientreforging:armor/attribute/spiritual": "灵性",
+  "affix.ancientreforging:armor/attribute/spiritual.suffix": "巫医",
+
+  "affix.ancientreforging:generic/attribute/lucky": "幸运",
+  "affix.ancientreforging:generic/attribute/lucky.suffix": "偶然",
+
+  "affix.ancientreforging:melee/attribute/nullifying": "无效",
+  "affix.ancientreforging:melee/attribute/nullifying.suffix": "破法者",
+
+  "affix.ancientreforging:melee/attribute/spellbreaking": "破咒",
+  "affix.ancientreforging:melee/attribute/spellbreaking.suffix": "禁魔傀儡",
+
+  "affix.ancientreforging:ranged/mob_effect/grievous": "重创",
+  "affix.ancientreforging:ranged/mob_effect/grievous.suffix": "负伤",
+
+  "affix.ancientreforging:armor/mob_effect/bursting": "爆裂",
+  "affix.ancientreforging:armor/mob_effect/bursting.suffix": "活力",
+
+  "affix.ancientreforging:durable": "坚韧",
+  "affix.ancientreforging:durable.suffix": "耐久"
+}
