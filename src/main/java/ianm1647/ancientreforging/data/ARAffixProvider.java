@@ -159,7 +159,7 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
 
         this.addAttribute("armor", "timekeeping", ALObjects.Attributes.COOLDOWN_REDUCTION, AttributeModifier.Operation.ADD_VALUE, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
-                .categories(Apoth.LootCategories.HELMET, Apoth.LootCategories.CHESTPLATE)
+                .categories(Apoth.LootCategories.HELMET, Apoth.LootCategories.CHESTPLATE, Apoth.LootCategories.SHIELD)
                 .step(0.005F)
                 .value(ancient, 0.075F, 0.15F));
 
@@ -255,6 +255,18 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                 .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
                 .value(ancient, 0.5F, 0.7F));
+
+        this.addAttribute("weapon", "runebreaking", ALObjects.Attributes.PROT_PIERCE, AttributeModifier.Operation.ADD_VALUE, b -> b
+                .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
+                .step(0.5F)
+                .value(ancient, 10F, 20F));
+
+        this.addAttribute("weapon", "nullifying", ALObjects.Attributes.PROT_SHRED, AttributeModifier.Operation.ADD_VALUE, b -> b
+                .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
+                .categories(Apoth.LootCategories.MELEE_WEAPON, Apoth.LootCategories.TRIDENT, Apoth.LootCategories.BOW)
+                .step(0.005F)
+                .value(ancient, 0.20F, 0.30F));
 
         this.addAttribute("melee", "lacerating", ALObjects.Attributes.CRIT_DAMAGE, AttributeModifier.Operation.ADD_VALUE, b -> b
                 .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
@@ -609,6 +621,27 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                         .definition(AffixType.ABILITY, DEFAULT_WEIGHT, DEFAULT_QUALITY)
                         .value(ancient, 0.35F, 0.6F)
                         .build());
+
+        // Boots Abilities
+
+        this.add(AncientReforging.loc("boots/ability/unhurried"), new AttributeToggleAffix(
+                AffixDefinition.builder(AffixType.ABILITY).weights(TieredWeights.forAllTiers(DEFAULT_WEIGHT, DEFAULT_QUALITY)).build(),
+                ApothMiscUtil.linkedSet(Attributes.MOVEMENT_SPEED),
+                linkedSet(ancient)));
+
+        this.add(AncientReforging.loc("boots/ability/surefooted"), new AttributeToggleAffix(
+                AffixDefinition.builder(AffixType.ABILITY).weights(TieredWeights.forAllTiers(DEFAULT_WEIGHT, DEFAULT_QUALITY)).build(),
+                ApothMiscUtil.linkedSet(Attributes.STEP_HEIGHT),
+                linkedSet(ancient)));
+
+        this.add(AncientReforging.loc("boots/ability/steadfast"), new AttributeToggleAffix(
+                AffixDefinition.builder(AffixType.ABILITY)
+                        .weights(TieredWeights.onlyFor(WorldTier.PINNACLE, 20, 0.75F))
+                        .exclusiveWith(afx("boots/ability/unhurried"))
+                        .exclusiveWith(afx("boots/ability/surefooted"))
+                        .build(),
+                ApothMiscUtil.linkedSet(Attributes.MOVEMENT_SPEED, Attributes.STEP_HEIGHT),
+                linkedSet(ancient)));
 
         // Shield Abilities
 

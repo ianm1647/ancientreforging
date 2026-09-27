@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-26T22:00:53.5099976	Affixes
+// 1.21.1	2026-09-27T17:44:51.7010569	Affixes
 9c6f46615e5c05e8b01202aa983588abb7f29624 data/ancientreforging/affixes/armor/attribute/adamantine.json
 d763379708905b09479e4d9341e7806df4ad86ad data/ancientreforging/affixes/armor/attribute/aquatic.json
 ca6bd39bd71236cd239e5d381a71ad2e674e2bc0 data/ancientreforging/affixes/armor/attribute/blessed.json
@@ -11,7 +11,7 @@ e038d0f47f98c441774e3f04164f79da454dfa4a data/ancientreforging/affixes/armor/att
 35f70aa61e264883aaea0e2874b5f92b87e94cd4 data/ancientreforging/affixes/armor/attribute/spiritual.json
 e61dc71279e5afe3aeea72d545144bb3d4d65fde data/ancientreforging/affixes/armor/attribute/stalwart.json
 b44743e769b30dba0ff690d7fea589f5722407d0 data/ancientreforging/affixes/armor/attribute/steel_touched.json
-dc7d296df13b23837a469979af30591e8e6e46e6 data/ancientreforging/affixes/armor/attribute/timekeeping.json
+9caf4f9e4818d176cc3725b66cba7425687b5585 data/ancientreforging/affixes/armor/attribute/timekeeping.json
 31c5ea4344d14d2b54d99a46d4cfc9e4295062e0 data/ancientreforging/affixes/armor/attribute/unbound.json
 5e542a92cd6c647a5b3406d4cc77370f347262fa data/ancientreforging/affixes/armor/attribute/windswept.json
 493385382d29039593ae27a26b8dbbb54da7ab89 data/ancientreforging/affixes/armor/attribute/winged.json
@@ -26,6 +26,9 @@ eaea456af1792aacf7ce6a15ea92c4d68d40d044 data/ancientreforging/affixes/armor/dmg
 d91a257ae1601ced871297edc58634d86f670b7c data/ancientreforging/affixes/armor/mob_effect/bursting.json
 c49618a5e538993dbe94894c99eec21f079e6a5e data/ancientreforging/affixes/armor/mob_effect/nimble.json
 121ba3db597462b253250f94a724c6ef3a0cb625 data/ancientreforging/affixes/armor/mob_effect/revitalizing.json
+f01adbeb59c106831c611603a73b7e06a5e76bc7 data/ancientreforging/affixes/boots/ability/steadfast.json
+eb4baa4dfbb99bbe5004ef6c7eb46cdd05efaa54 data/ancientreforging/affixes/boots/ability/surefooted.json
+cb734da1ab3cb97e03dd99fe5419e44655167772 data/ancientreforging/affixes/boots/ability/unhurried.json
 392bf3cdc0b665d683ef21192bf64da604193dba data/ancientreforging/affixes/breaker/ability/enlightened.json
 2d9b097f9b898d4d47ecfcabf77f5172ba8f98a0 data/ancientreforging/affixes/breaker/ability/supermassive.json
 3741b99a33cf42522408bedca13b0f4402ecfd9b data/ancientreforging/affixes/breaker/attribute/destructive.json
@@ -88,4 +91,6 @@ df7a6fa11592d5d2c6c61ad23867dcffaa40eff2 data/ancientreforging/affixes/shield/mo
 0baaddd718d02a18a39b4fa287872c5a2a4af52d data/ancientreforging/affixes/shield/mob_effect/withering.json
 5facfc156e43fd00c71e66562f4bcb432a8e3420 data/ancientreforging/affixes/shield/psychic.json
 065e00a4dd2d12f5639dca41c63ff3cf2d3f9bdb data/ancientreforging/affixes/shield/retreating.json
+f12f1a4d3f2ca17e5aa4990458d86f8173e4f03f data/ancientreforging/affixes/weapon/attribute/nullifying.json
+7e184dad75fe979f76e45fa2e7acaab73d4bfd3f data/ancientreforging/affixes/weapon/attribute/runebreaking.json
 927e3a10032a1d66de558cef4630c8a1b1d25b08 data/ancientreforging/affixes/weapon/attribute/shredding.json

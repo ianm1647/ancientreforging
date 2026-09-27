@@ -1,6 +1,7 @@
 {
   "block.ancientreforging.ancient_reforging_table": "Ancient Reforging Table",
   "block.ancientreforging.ancient_reforging_table.desc": "Uses Sigils of Rebirth and Rarity Materials to reforge items",
+  "block.ancientreforging.ancient_reforging_table.desc2": "Max Rarity: %s",
 
   "item.ancientreforging.ancient_material": "Manifestation of Infinity",
   "rarity.ancientreforging:ancient": "Ancient",
@@ -79,6 +80,12 @@
 
   "affix.ancientreforging:weapon/attribute/shredding": "Shredding",
   "affix.ancientreforging:weapon/attribute/shredding.suffix": "of the Maelstrom",
+
+  "affix.ancientreforging:weapon/attribute/runebreaking": "Runebreaking",
+  "affix.ancientreforging:weapon/attribute/runebreaking.suffix": "of the Runebreaker",
+
+  "affix.ancientreforging:weapon/attribute/nullifying": "Nullifying",
+  "affix.ancientreforging:weapon/attribute/nullifying.suffix": "of Nullification",
 
   "affix.ancientreforging:melee/attribute/giant_slaying": "Giant Slaying",
   "affix.ancientreforging:melee/attribute/giant_slaying.suffix": "of Colossal Strikes",
@@ -178,6 +185,18 @@
   "affix.ancientreforging:melee/cleaving": "Cleaving",
   "affix.ancientreforging:melee/cleaving.suffix": "of the Butcher",
   "affix.ancientreforging:melee/cleaving.desc": "Attacks have a %s%% chance to also hit up to %s nearby enemies.",
+
+  "affix.ancientreforging:boots/ability/unhurried": "Unhurried",
+  "affix.ancientreforging:boots/ability/unhurried.suffix": "of the Calm Journey",
+  "affix.ancientreforging:boots/ability/unhurried.desc": "Press %s to toggle all Movement Speed bonuses.",
+
+  "affix.ancientreforging:boots/ability/surefooted": "Surefooted",
+  "affix.ancientreforging:boots/ability/surefooted.suffix": "of the Measured Step",
+  "affix.ancientreforging:boots/ability/surefooted.desc": "Press %s to toggle all Step Height bonuses.",
+
+  "affix.ancientreforging:boots/ability/steadfast": "Steadfast",
+  "affix.ancientreforging:boots/ability/steadfast.suffix": "of Rigidity",
+  "affix.ancientreforging:boots/ability/steadfast.desc": "Press %s to toggle all Movement Speed and Step Height bonuses.",
 
   "affix.ancientreforging:breaker/ability/enlightened": "Enlightened",
   "affix.ancientreforging:breaker/ability/enlightened.suffix": "of the Lightbringer",
