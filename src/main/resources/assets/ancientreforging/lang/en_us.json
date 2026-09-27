@@ -229,6 +229,9 @@
   "affix.ancientreforging:armor/attribute/oxygenated": "Oxygenated",
   "affix.ancientreforging:armor/attribute/oxygenated.suffix": "of the Diver",
 
+  "affix.ancientreforging:armor/attribute/timekeeping": "Timekeeping",
+  "affix.ancientreforging:armor/attribute/timekeeping.suffix": "of Chronos",
+
   "affix.ancientreforging:melee/mob_effect/omniscient": "Omniscient",
   "affix.ancientreforging:melee/mob_effect/omniscient.suffix": "of the Grand Sage",
 

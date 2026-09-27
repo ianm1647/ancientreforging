@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-20T15:33:50.8326023	Affixes
+// 1.21.1	2026-09-26T22:00:53.5099976	Affixes
 9c6f46615e5c05e8b01202aa983588abb7f29624 data/ancientreforging/affixes/armor/attribute/adamantine.json
 d763379708905b09479e4d9341e7806df4ad86ad data/ancientreforging/affixes/armor/attribute/aquatic.json
 ca6bd39bd71236cd239e5d381a71ad2e674e2bc0 data/ancientreforging/affixes/armor/attribute/blessed.json
@@ -11,6 +11,7 @@ e038d0f47f98c441774e3f04164f79da454dfa4a data/ancientreforging/affixes/armor/att
 35f70aa61e264883aaea0e2874b5f92b87e94cd4 data/ancientreforging/affixes/armor/attribute/spiritual.json
 e61dc71279e5afe3aeea72d545144bb3d4d65fde data/ancientreforging/affixes/armor/attribute/stalwart.json
 b44743e769b30dba0ff690d7fea589f5722407d0 data/ancientreforging/affixes/armor/attribute/steel_touched.json
+dc7d296df13b23837a469979af30591e8e6e46e6 data/ancientreforging/affixes/armor/attribute/timekeeping.json
 31c5ea4344d14d2b54d99a46d4cfc9e4295062e0 data/ancientreforging/affixes/armor/attribute/unbound.json
 5e542a92cd6c647a5b3406d4cc77370f347262fa data/ancientreforging/affixes/armor/attribute/windswept.json
 493385382d29039593ae27a26b8dbbb54da7ab89 data/ancientreforging/affixes/armor/attribute/winged.json

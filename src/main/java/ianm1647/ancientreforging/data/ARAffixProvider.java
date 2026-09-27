@@ -157,6 +157,12 @@ public class ARAffixProvider extends DynamicRegistryProvider<Affix> {
                 .categories(Apoth.LootCategories.HELMET)
                 .value(ancient, 1.65F, 2.5F));
 
+        this.addAttribute("armor", "timekeeping", ALObjects.Attributes.COOLDOWN_REDUCTION, AttributeModifier.Operation.ADD_VALUE, b -> b
+                .definition(AffixType.STAT, DEFAULT_WEIGHT, DEFAULT_QUALITY)
+                .categories(Apoth.LootCategories.HELMET, Apoth.LootCategories.CHESTPLATE)
+                .step(0.005F)
+                .value(ancient, 0.075F, 0.15F));
+
         // Breaker Attributes
 
         this.addAttribute("breaker", "destructive", ALObjects.Attributes.MINING_SPEED, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL, b -> b
